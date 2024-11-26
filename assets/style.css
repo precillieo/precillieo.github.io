@@ -85,7 +85,7 @@
   .pagination .prev,
   .pagination .next,
   .site-footer a {
-    color: rgb(10, 93, 128);
+    color: #0476D0;
     padding-bottom: 0.05em;
     border-bottom: 2px solid transparent;
     -webkit-transition: border 300ms linear;
