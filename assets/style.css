@@ -208,6 +208,12 @@
     flex-wrap: wrap;
     border-bottom: 1px solid #ccc;
   }
+
+  .line {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+
+  }
   
   .page-intro .page-intro-item {
     padding: 0.75em 0;
