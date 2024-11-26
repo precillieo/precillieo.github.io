@@ -195,6 +195,11 @@
     max-width: 800px;
     font-weight: normal;
   }
+
+  .lines {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
   
   .page-intro {
     border-collapse: collapse;
@@ -207,12 +212,6 @@
     align-items: center;
     flex-wrap: wrap;
     border-bottom: 1px solid #ccc;
-  }
-
-  .lines {
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-
   }
   
   .page-intro .page-intro-item {
