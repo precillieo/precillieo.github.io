@@ -85,7 +85,7 @@
   .pagination .prev,
   .pagination .next,
   .site-footer a {
-    color: #0476D0;
+    color: #FFC0CB;
     padding-bottom: 0.05em;
     border-bottom: 2px solid transparent;
     -webkit-transition: border 300ms linear;
@@ -102,7 +102,7 @@
   .pagination .prev:hover,
   .pagination .next:hover,
   .site-footer a:hover {
-    border-bottom: 2px solid #0086b3;
+    border-bottom: 2px solid #FFC0CB;
   }
   
   /* HEADER */
