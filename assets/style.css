@@ -1,276 +1,349 @@
+/* CSS Variables for theme colors */
+:root {
+  --bg-color: #ffffff;
+  --text-color: rgba(51, 51, 51, 0.8);
+  --heading-color: #333333cc;
+  --link-color: #FC6C85;
+  --link-hover: #f9a4b3;
+  --border-color: #d9d9d9;
+  --border-light: #ccc;
+  --footer-text: gray;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #e0e0e0;
+  --heading-color: #f0f0f0;
+  --link-color: #ff7a9a;
+  --link-hover: #ffb3cc;
+  --border-color: #404040;
+  --border-light: #555;
+  --footer-text: #bbb;
+}
+
 /* BASIC SETUP */
-
 * {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font: inherit;
-    vertical-align: baseline;
-    box-sizing: border-box;
-  }
-  
-  html {
-    color: #333333cc;
-    text-rendering: optimizeLegibility;
-    font-size: 100%;
-    line-height: 1.5;
-    font: inherit;
-  }
-  
-  body {
-    color: rgba(51, 51, 51, 0.8);
-    font-family: "Overpass Mono", "monospace";
-  }
-  
-  p {
-    margin: 0 0 0.75em;
-  }
-  
-  ul,
-  ol,
-  dl {
-    margin-top: 0;
-    margin-left: 1.2em;
-    margin-bottom: 1rem;
-    list-style-type: disc;
-    list-style-position: outside;
-    list-style-image: none;
-  }
-  
-  /* ul,
-  ol {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  ol,
-  ul {
-    list-style: none;
-  } */
-  
-  article,
-  aside,
-  details,
-  figcaption,
-  figure,
-  footer,
-  header,
-  hgroup,
-  menu,
-  nav,
-  section {
-    display: block;
-  }
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
 
-  h1.thicker {
-    font-weight: 900;
-  }
-  
-  strong {
-    font-weight: bold;
-  }
-  
-  a {
-    color: #000;
-    text-decoration: none;
-    transition: color 150ms ease;
-  }
-  .roundImg {
-    border-radius: 50%;
-    border: 5px outset white;
-  }
-  .link,
-  .intro a,
-  .navbar a,
-  .post-link,
-  .post a,
-  .page a,
-  .pagination .prev,
-  .pagination .next,
-  .site-footer a {
-    color: #FC6C85;
-    padding-bottom: 0.05em;
-    border-bottom: 2px solid transparent;
-    -webkit-transition: border 300ms linear;
-    -moz-transition: border 300ms linear;
-    transition: border 300ms linear;
-  }
-  
-  .link:hover,
-  .intro a:hover,
-  .navbar a:hover,
-  .post-link:hover,
-  .post a:hover,
-  .page a:hover,
-  .pagination .prev:hover,
-  .pagination .next:hover,
-  .site-footer a:hover {
-    border-bottom: 2px solid #f9a4b3;
-  }
-  
-  /* HEADER */
-  
-  .site-header {
-    border-bottom: 1px solid #d9d9d9;
-    min-height: 80px;
-  }
-  
-  .nav {
-    min-height: 64px;
-  }
-  
-  .container {
-    padding-top: 1.5em;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 800px;
-    font-weight: normal;
-  }
-  
-  .list li {
-    margin-top: 1em;
-  }
-  
-  .header-name {
-    font-size: 1.5em;
-    font-weight: 700;
-    text-align: center;
-    margin: 1em 0 1em 0;
-  }
-  
-  .read-more-button {
-    margin: 1em 1em;
-  }
-  
-  .blog-container {
-      text-align: center;
-  }
-  
-  .blog-container img {
-      width: 75%;
-  }
-  
-  .blog-container h1 {
-      font-size: 1em;
-  }
-  
-  .read-more-button a {
-    padding: 0.8em 1em;
-    background-color: black;
-    color: white;
-    border-radius: 12px;
-  }
-  
+html {
+  color: var(--heading-color);
+  text-rendering: optimizeLegibility;
+  font-size: 100%;
+  line-height: 1.5;
+  font: inherit;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  color: var(--text-color);
+  font-family: "Overpass Mono", "monospace";
+  background-color: var(--bg-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+p {
+  margin: 0 0 0.75em;
+}
+
+ul,
+ol,
+dl {
+  margin-top: 0;
+  margin-left: 1.2em;
+  margin-bottom: 1rem;
+  list-style-type: disc;
+  list-style-position: outside;
+  list-style-image: none;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+h1.thicker {
+  font-weight: 900;
+}
+
+strong {
+  font-weight: bold;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.roundImg {
+  border-radius: 50%;
+  border: 5px outset var(--border-light);
+  transition: border-color 0.3s ease;
+}
+
+.link,
+.intro a,
+.navbar a,
+.post-link,
+.post a,
+.page a,
+.pagination .prev,
+.pagination .next,
+.site-footer a {
+  color: var(--link-color);
+  padding-bottom: 0.05em;
+  border-bottom: 2px solid transparent;
+  -webkit-transition: border 300ms linear;
+  -moz-transition: border 300ms linear;
+  transition: border 300ms linear;
+}
+
+.link:hover,
+.intro a:hover,
+.navbar a:hover,
+.post-link:hover,
+.post a:hover,
+.page a:hover,
+.pagination .prev:hover,
+.pagination .next:hover,
+.site-footer a:hover {
+  border-bottom: 2px solid var(--link-hover);
+}
+
+/* HEADER */
+.site-header {
+  border-bottom: 1px solid var(--border-color);
+  min-height: 80px;
+  transition: border-color 0.3s ease;
+}
+
+.nav {
+  min-height: 64px;
+}
+
+.container {
+  padding-top: 1.5em;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
+  font-weight: normal;
+}
+
+.list li {
+  margin-top: 1em;
+}
+
+.header-name {
+  font-size: 1.5em;
+  font-weight: 700;
+  text-align: center;
+  margin: 1em 0 1em 0;
+  color: var(--heading-color);
+}
+
+.read-more-button {
+  margin: 1em 1em;
+}
+
+.blog-container {
+  text-align: center;
+}
+
+.blog-container img {
+  width: 75%;
+}
+
+.blog-container h1 {
+  font-size: 1em;
+}
+
+.read-more-button a {
+  padding: 0.8em 1em;
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  border-radius: 12px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.flex-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo {
+  margin: 5px 0;
+  cursor: pointer;
+  letter-spacing: 0.8px;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 300;
+}
+
+.navbar {
+  margin: 5px 0;
+  position: relative;
+  padding: 0;
+  pointer-events: all;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.navbar li {
+  display: inline-block;
+  padding: 0 0.6em;
+}
+
+/* Theme Toggle Switch */
+.theme-toggle {
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 50px;
+  height: 25px;
+  background-color: var(--border-light);
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-switch::before {
+  content: '';
+  position: absolute;
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  background-color: var(--bg-color);
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  border: 2px solid var(--border-light);
+}
+
+[data-theme="dark"] .toggle-switch::before {
+  transform: translateX(25px);
+}
+
+.toggle-icon {
+  margin: 0 5px;
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+/* ARTICLE */
+.lines {
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  transition: border-color 0.3s ease;
+}
+
+.line {
+  border-bottom: 1px solid var(--border-light);
+  transition: border-color 0.3s ease;
+}
+
+.page-intro {
+  border-collapse: collapse;
+  font-feature-settings: "kern", "liga", "tnum";
+  margin-bottom: 0.75em;
+  border-spacing: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border-light);
+  transition: border-color 0.3s ease;
+}
+
+.page-intro .page-intro-item {
+  padding: 0.75em 0;
+}
+
+.social {
+  margin-top: 10px;
+  display: flex;
+}
+
+.social .social-item {
+  margin: 0 10px;
+}
+
+.fab,
+.far {
+  font-weight: 400;
+}
+
+.fab {
+  font-family: "Font Awesome 5 Brands";
+}
+
+.fa,
+.fab,
+.fad,
+.fal,
+.far,
+.fas {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+}
+
+/* FOOTER */
+.site-footer {
+  padding: 1.5em 0;
+}
+
+.site-footer small {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--footer-text);
+  transition: color 0.3s ease;
+}
+
+.site-footer .block {
+  display: block;
+}
+
+/* Responsive design for toggle */
+@media (max-width: 768px) {
   .flex-wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  
-  .logo {
-    margin: 5px 0;
-    cursor: pointer;
-    letter-spacing: 0.8px;
-    font-size: 20px;
-    line-height: 28px;
-    font-weight: 300;
+    flex-direction: column;
+    align-items: flex-start;
   }
   
   .navbar {
-    margin: 5px 0;
-    position: relative;
-    padding: 0;
-    pointer-events: all;
-    cursor: pointer;
-  }
-  
-  .navbar li {
-    display: inline-block;
-    padding: 0 0.6em;
-  }
-  
-  /* ARTICLE */
-  
-  .container {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 800px;
-    font-weight: normal;
-  }
-
-  .lines {
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-  }
-
-  .line {
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .page-intro {
-    border-collapse: collapse;
-    font-feature-settings: "kern", "liga", "tnum";
-    margin-bottom: 0.75em;
-    border-spacing: 0;
+    margin-top: 1rem;
     width: 100%;
-    display: flex;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    border-bottom: 1px solid #ccc;
   }
   
-  .page-intro .page-intro-item {
-    padding: 0.75em 0;
+  .theme-toggle {
+    margin-left: 0;
   }
-  
-  .social {
-    margin-top: 10px;
-    display: flex;
-  }
-  
-  .social .social-item {
-    margin: 0 10px;
-  }
-  
-  .fab,
-  .far {
-    font-weight: 400;
-  }
-  
-  .fab {
-    font-family: "Font Awesome 5 Brands";
-  }
-  
-  .fa,
-  .fab,
-  .fad,
-  .fal,
-  .far,
-  .fas {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    line-height: 1;
-  }
-  
-  /* FOOTER */
-  
-  .site-footer {
-    padding: 1.5em 0;
-  }
-  
-  .site-footer small {
-    display: block;
-    font-size: 0.75rem;
-    color: gray;
-  }
-  
-  .site-footer .block {
-    display: block;
-  }
+}
