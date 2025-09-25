@@ -1,239 +1,596 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Precious Kolawole</title>
+    <title>Adedamola Adedapo</title>
     <meta charset="utf-8" />
-    <meta name="google-site-verification" content="x90m5dgpe4F2vr3QIo56ycq2CR3JKLvZvqDGZ25jIss" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="This website is for Precious Kolawole where you'd find up-to-date information about her career journey in software engineering, machine learning and research as well as other activities she is involved in."
+      content="Career website for Adedamola Adedapo – Backend Engineer specializing in scalable APIs, microservices, cloud, and AI-driven systems."
     />
-    <meta name="keywords" content="Precious Kolawole, Dev Degree Intern" />
-    <link rel="stylesheet" type="text/css" href="assets/style.css" />
+    <meta name="keywords" content="Adedamola Adedapo, Backend Engineer, Python, FastAPI, Django, Cloud, AI" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png" id="favicon" />
+
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300;400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.0.7/css/all.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
-    />
-    <link rel="author" href="https://www.precillieo.com/" />
-    <link rel="author" href="https://www.linkedin.com/in/kolawole-precious-8723b2198/" />
-    <link rel="author" href="https://precillieo.medium.com/" />
+    <link rel="author" href="https://linkedin.com/in/adedamola-adedapo" />
+    <link rel="author" href="https://github.com/ichdamola" />
   </head>
 
   <body>
-    <header class="site-header">
-      <nav class="nav">
-        <div class="container flex-wrap">
-          <h1 class="logo">
-            <a href="https://precillieo.github.io">Precious Kolawole</a>
-          </h1>
-          <div class="navbar">
-            <li><a href="#about">About</a></li>
-            <li><a href="#news">News</a></li>
-            <li><a href="assets/Precious-Kolawole-Resume-20250505.pdf">CV</a></li>
-            <li><a href="https://precillieo.medium.com/" target="_blank">Blog</a></li>
-            <li><a href="https://www.precillieo.com/" target="_blank">Other website</a></li>
-            <div class="theme-toggle">
-              <i class="fas fa-sun toggle-icon"></i>
-              <div class="toggle-switch" onclick="toggleTheme()"></div>
-              <i class="fas fa-moon toggle-icon"></i>
+    <nav class="navbar">
+      <div class="nav-brand">ADEDAMOLA ADEDAPO</div>
+      <div class="nav-social">
+        <a href="mailto:adedamola.adedapo1@gmail.com" class="nav-icon"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/ichdamola" target="_blank" class="nav-icon"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/adedamola-adedapo" target="_blank" class="nav-icon"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </nav>
+
+    <main class="hero-section">
+      <div class="hero-container">
+        <div class="hero-content">
+          <nav class="side-nav">
+            <div class="nav-prefix">—</div>
+            <a href="#hello" class="nav-link active">hello</a>
+            <a href="#about" class="nav-link">about_me</a>
+            <a href="#education" class="nav-link">education</a>
+            <a href="#experience" class="nav-link">experience</a>
+            <a href="#skills" class="nav-link">skills</a>
+            <a href="#portfolio" class="nav-link">portfolio</a>
+          </nav>
+
+          <div class="hero-main">
+            <div class="hero-text">
+              <h1 class="hero-title">
+                Hi, I'm <span class="highlight">Adedamola.</span>
+              </h1>
+              <p class="hero-description">
+                I am a Backend Engineer based in Nigeria, specialized in building 
+                scalable APIs, microservices, and distributed systems.
+              </p>
+              <p class="hero-description">
+                I am passionate about Python and automation, and am interested in 
+                pursuing innovation in AI-driven backend systems.
+              </p>
+              <div class="cv-buttons">
+                <a href="assets/Adedamola-cv.pdf" target="_blank" class="cv-btn">English CV</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="geometric-portrait">
+              <!-- Abstract geometric representation -->
+              <svg viewBox="0 0 300 400" class="portrait-svg">
+                <!-- Head outline -->
+                <path d="M150 50 Q200 60 220 120 Q225 180 200 220 Q180 250 150 260 Q120 250 100 220 Q75 180 80 120 Q100 60 150 50 Z" 
+                      fill="none" stroke="#00d4ff" stroke-width="2" class="animated-path"/>
+                
+                <!-- Hair -->
+                <path d="M120 60 Q140 40 150 45 Q160 40 180 60 Q190 50 200 65 Q195 70 185 75" 
+                      fill="none" stroke="#00d4ff" stroke-width="2" class="animated-path" style="animation-delay: 0.5s"/>
+                
+                <!-- Glasses -->
+                <circle cx="130" cy="140" r="25" fill="none" stroke="#00d4ff" stroke-width="2" class="animated-path" style="animation-delay: 1s"/>
+                <circle cx="170" cy="140" r="25" fill="none" stroke="#00d4ff" stroke-width="2" class="animated-path" style="animation-delay: 1s"/>
+                <path d="M155 140 L145 140" stroke="#00d4ff" stroke-width="2" class="animated-path" style="animation-delay: 1.2s"/>
+                
+                <!-- Beard geometric shapes -->
+                <circle cx="140" cy="200" r="15" fill="none" stroke="#00d4ff" stroke-width="1" class="animated-path" style="animation-delay: 1.5s"/>
+                <circle cx="160" cy="210" r="18" fill="none" stroke="#00d4ff" stroke-width="1" class="animated-path" style="animation-delay: 1.7s"/>
+                <circle cx="150" cy="230" r="12" fill="none" stroke="#00d4ff" stroke-width="1" class="animated-path" style="animation-delay: 1.9s"/>
+                <circle cx="135" cy="220" r="10" fill="none" stroke="#00d4ff" stroke-width="1" class="animated-path" style="animation-delay: 2.1s"/>
+                <circle cx="165" cy="225" r="8" fill="none" stroke="#00d4ff" stroke-width="1" class="animated-path" style="animation-delay: 2.3s"/>
+                
+                <!-- Additional geometric elements -->
+                <path d="M100 300 Q150 320 200 300" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.6" class="animated-path" style="animation-delay: 2.5s"/>
+                <circle cx="120" cy="320" r="5" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.4" class="animated-path" style="animation-delay: 2.7s"/>
+                <circle cx="180" cy="315" r="7" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.4" class="animated-path" style="animation-delay: 2.9s"/>
+              </svg>
             </div>
           </div>
         </div>
-      </nav>
-    </header>
-
-    <article class="page container">
-      <div class="page-content">
-        <div class="page-intro">
-          <div class="page-intro-item">
-            <strong>Precious Kolawole</strong>
-            <br />
-            <br />
-            Email:
-            <a>preciouskolawole[at]cmail[dot]carleton[dot]ca</a>
-            <br />
-            <div class="social">
-              <a class="social-item" href="https://github.com/Precillieo" target="_blank">
-                <i class="fab fa-github" href="#" aria-hidden="true"></i>
-              </a>
-              /
-              <a class="social-item" href="https://twitter.com/precillieo" target="_blank">
-                <i class="fab fa-twitter" href="#" aria-hidden="true"></i>
-              </a>
-              /
-              <a class="social-item" href="https://www.linkedin.com/in/kolawole-precious-8723b2198/" target="_blank">
-                <i class="fab fa-linkedin-in" href="#" aria-hidden="true"></i>
-              </a>
-              /
-              <a class="social-item" href="https://www.youtube.com/@precillieo" target="_blank">
-                <i class="fab fa-youtube" href="#" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-          <div class="page-intro-item">
-            <img
-              src="assets/precious-kolawole-professional.jpg"
-              alt="Precious_Kolawole"
-              width="250px"
-              class="roundImg"
-            />
-          </div>
-        </div>
-        <div class="container">
-          <p>Hi, welcome to my website 👋🏽 :)</p>
-        <h1 id="about" class="header-name">School + Work + Research</h1>
-        <p>
-          I am a <a href="https://devdegree.ca/" target="_blank">Dev Degree Intern</a> at
-          <a href="https://www.shopify.com/" target="_blank">Shopify</a> since 2022. I started my third and final placement in Applied Machine Learning Engineering in January 2025. I am in my fourth year of a Bachelor in Computer Science program at
-          <a href="https://www.carleton.ca/" target="_blank">Carleton University</a>
-          in the Artificial Intelligence and Machine Learning stream.
-        </p>
-        <p>
-          I started my summer research internship at the Data Science for Interventional Healthcare Group (DSIH Lab) supervised by <a href="https://people.scs.carleton.ca/~matthewholden/" target="_blank">Professor Matthew S. Holden</a> under the <a href="https://science.carleton.ca/students/undergraduate-student-summer-research-opportunities/black-and-indigenous-summer-research-internships/" target="_blank">Black and Indigenous Summer Research Internship</a> at Carleton University. Previously, I was an Undergraduate Research Assistant at the Nesbitt Biology Research Lab under <a href="https://carleton.ca/sce/people/adler/" target="_blank">Dr. Andy Adler</a> and <a href="https://carleton.ca/biology/people/jeff-dawson/" target="_blank">Dr. Jeffery Dawson</a>, with research focused on the intersection of biology and computing to improve concussion diagnosis with visual eye tracking and ocular EMG analysis.
-        </p>
-        <p>
-          I have been blessed with several scholarships and awards for academic and technical excellence while in school. A few selected ones include the
-          <a href="https://buildyourfuture.withgoogle.com/scholarships/generation-google-scholarship" target="_blank">Google Generation Scholarship</a>,
-          <a href="https://www.palantir.com/careers/students/scholarship/wit-north-america/" target="_blank">Palantir Women in Tech Scholarship</a>,
-          <a href="https://www.cadence.com/en_US/home/company/cadence-academic-network/diversity-in-tech-scholarship.html" target="_blank">Cadence Diversity in Tech Scholarship</a>,
-          <a href="https://carleton.ca/seo/awards/" target="_blank">Paul Bregman Family Student Experience Award</a>,
-          <a href="https://readthepeak.com/lists/emerging-leaders-2025/c/startups-and-tech" target="_blank">Canadian Leaders Under 40 Shaping Canada's Economy</a>, and Ms. Algorithm - Best Female Data Starlet in Nigeria 2020, among others.
-        </p>
-        <p>
-          Another key thing about me: I was a Medical Rehabilitation student at
-          <a href="https://www.oauife.edu.ng/" target="_blank">Obafemi Awolowo University</a> in Nigeria and left the degree after two years to pursue computer science, hence my strong bias and research interest in ML, AI & Healthcare.
-        </p>
-
-        </div>
-        <div class="container lines">
-          <h1 class="header-name">Publications</h1>
-          <ul class="list">
-            <li>
-              <strong>Fairness-Aware Machine Learning for Social Bias Detection in Healthcare Research Datasets</strong><br>
-              <span>Precious Kolawole</span><br>
-              <em>Proceedings of Deep Learning Indaba 2025</em> <span style="color: #888;">(Accepted, awaiting publication)</span><br>
-              <span>Poster & Oral Presentation, Deep Learning Indaba 2025, Dakar, Senegal</span><br>
-              <a href="assets/Indaba_Poster (1).pdf" target="_blank">[Poster]</a>
-              <a href="#publications-fairness-aware" onclick="window.open('assets/fairness-aware-ml-indaba2025-paper.pdf','_blank')">[Paper]</a>
-            </li>
-            <li>
-              <strong>Annotation Is (Almost) Indispensable: The Limitations of Unpaired Domain Translation and Semi-Supervised Approaches to Ultrasound Simplification</strong><br>
-              <span>Precious Kolawole, Matthew S. Holden</span><br>
-              <em>Submitted to SPIE Medical Imaging Journal (Image-Guided Procedures, Robotic Interventions, and Modeling)</em> <span style="color: #888;">(Under review)</span><br>
-              <a href="#publications-ultrasound-simplification" onclick="window.open('assets/ultrasound-simplification-preprint.pdf','_blank')">[Preprint]</a>
-            </li>
-          </ul>
-        </div>
-        <div class="container lines">
-          <h1 class="header-name">Other Undergraduate Research Works</h1>
-          <ul class="list">
-            <li>
-              <strong>Honours Project:</strong> Improving Concussion Diagnosis with Visual Eye Tracking and Ocular EMG Analysis<br>
-              <span><em>December 2024</em></span><br>
-              <a href="https://report-hub.scs.carleton.ca/projectPage/2812/" target="_blank">[Details]</a>
-            </li>
-            <li>
-              <strong>COMP 3106:</strong> Multilingual Speech Recognition for Clinical Note Taking<br>
-              <span><em>December 2024</em></span>
-            </li>
-          </ul>
-        </div>
-        <div class="container">
-          <div class="line">
-            <h1 id="news" class="header-name">News</h1>
-            <h1 class="thicker">2025</h1>
-            <ul class="list">
-              <li>
-                My AI and healthcare research work got featured and published on <a href="https://newsroom.carleton.ca/story/ai-health-solutions/" target="_blank">Carleton University's main website</a> and shared across the university's <a href="https://www.linkedin.com/posts/carleton-university_use-all-of-the-resources-the-world-has-given-activity-7335393099625480192-kMi4?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAC5VMVYBx5Mb1Vv8OAQK6Nh_4XNxvNBLMSg" target="_blank">social media platforms</a>.<strong>June 2025</strong>
-              </li>
-              <li>
-                I was recognized as one of the Canadian leaders under 40 shaping Canada's economy, culture, and society in 2025. <a href="https://readthepeak.com/lists/emerging-leaders-2025/c/startups-and-tech" target="_blank">The Peak's 2025 Class of Emerging Leaders—Tech Category!</a> <strong>31st March 2025</strong>
-              </li>
-              <li>
-                I applied for the Black and Indigenous Summer Research Internship again. I got selected! I will be doing research again this Summer under Professor Matthew Holden at the Carleton School of Computer Science. <strong>19th March 2025</strong>
-              </li>
-              <li>
-                My TEDx talk is now available on YouTube! <a href="https://youtu.be/TQd3eGjaTOo?si=XNdYN1rMdjX22lH7" target="_blank">How coding can change your life—and the world</a>. <strong>20th March 2025</strong>
-              </li>
-              <li>
-                I was presented the <a href="https://carleton.ca/seo/awards/#slideme-2024-2025-award-recipients" target="_blank">student life award</a> at the <a href="https://carleton.ca/seo/soar/" target="_blank">SOAR Leadership Conference</a>. <strong>1st February 2025</strong>
-              </li>
-              <li>I started my 3rd and final placement at <a href="https://www.shopify.com/" target="_blank">Shopify</a> as an Applied Machine Learning Engineering Intern. <strong>2nd January 2025</strong></li>
-            </ul>
-
-            <h1 class="thicker">2024</h1>
-            <ul class="list">
-              <li>
-                I have been selected as a recipient of the Paul Bregman Family Student Experience Award! I will be presented as a 
-                <a href="https://carleton.ca/seo/awards/" target="_blank">Carleton Student Life Award</a> winner at the 
-                <a href="https://carleton.ca/seo/soar/" target="_blank">SOAR Leadership Conference</a> on the 1st of February. <strong>19th December 2024</strong>
-              </li>
-              <li>I completed my undergraduate honours on <a href="https://report-hub.scs.carleton.ca/projectPage/2812/" target="_blank">Improving Concussion Diagnosis with Visual Eye Tracking and Ocular EMG Analysis</a>. <strong>16th December 2024</strong></li>
-              <li>After my TED Talk, I was invited to speak at Westboro Academy, an Ottawa bilingual school for students from kindergarten to grade 8, about how coding can positively impact lives and how to use technology ethically. This event is scheduled for February 2025. <strong>5th November 2024</strong></li>
-              <li>I gave a TED talk at <a href="https://www.tedxmechanicsville.com/" target="_blank">TEDxMechanicsville</a> on "How Coding can Change Your Life -- and the World." <strong>2nd November 2024</strong></li>
-              <li>My ongoing summer research internship has been converted into my final year honors project. I now have a new co-supervisor from the School of Computer Science, <a href="https://carleton.ca/scs/" target="_blank">Professor Nadine Moacdieh</a>. <strong>24th September 2024</strong></li>
-              <li>I received a Rising Star Award from She Code Africa to celebrate my remarkable achievements and rapid growth trajectory in the tech space. <strong>12th September 2024</strong></li>
-              <li>I traveled to Senegal, Africa, for <a href="https://deeplearningindaba.com/2024/" target="_blank">Deep Learning Indaba 2024</a>, an annual meeting of the African Machine Learning and AI Community. <strong>1st September 2024</strong></li>
-              <li>I received an acceptance to be a TED Speaker at TEDxMechanicsVille Ensemble, Bayview Ottawa. <strong>27th August 2024</strong></li>
-              <li>I attended Shopify Summit 2024 in Toronto, Canada, celebrating 20 years of making commerce better for everyone. <strong>25th June 2024</strong></li>
-              <li>My B1/B2 visa application to the United States of America got approved. <strong>5th June 2024</strong></li>
-              <li>I received a summer employment offer as an undergraduate student researcher at the Nesbitt Biology Lab under <a href="https://carleton.ca/" target="_blank">Professor Jeff Dawson</a> and <a href="https://carleton.ca/" target="_blank">Professor Andy Adler</a>. <strong>27th March 2024</strong></li>
-              <li>My Black and Indigenous Summer Research Internship (BISRI) application was rejected by the Office of the Dean of Science. <strong>20th March 2024</strong></li>
-              <li>My application for the <a href="https://science.carleton.ca/students/undergraduate-student-summer-research-opportunities/black-and-indigenous-summer-research-internships/" target="_blank">Black and Indigenous Summer Research Internship (BISRI)</a> is being sponsored by <a href="https://carleton.ca/" target="_blank">Professor Jeff Dawson</a>. <strong>24th January 2024</strong></li>
-            </ul>
-            <h1 class="thicker">2023</h1>
-            <ul class="list">
-              <li>I was selected as a recipient of Cadence's Diversity in Technology Scholarship for 2023. <a href="https://www.cadence.com/en_US/home/company/cadence-academic-network/diversity-in-tech-scholarship.html" target="_blank">Details here</a>. <strong>21st November 2023</strong></li>
-              <li>I became an Undergraduate Teaching Assistant for COMP 1805 (Introduction to Algorithms & Discrete Structures) at the <a href="https://carleton.ca/scs/" target="_blank">School of Computer Science</a> under <a href="https://carleton.ca/scs/" target="_blank">Professor Alexa Sharp</a>. <strong>9th September 2023</strong></li>
-              <li>I was selected as a 2023 Palantir Women in Technology Scholarship (North America award recipient). <a href="https://www.palantir.com/careers/students/scholarship/wit-north-america/" target="_blank">Details here</a>. <strong>26th April 2023</strong></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <footer class="site-footer">
-      <div class="container">
-        <small><b>Last Updated:</b> November, 2024</small>
-        <small class="block">
-          © Precious Kolawole. Shamelessly forked from
-          <a href="https://stevenkolawole.github.io/" target="_blank"><span style="color: #FFC0CB">Steven Kolawole's page</span></a>
-          · &lt;/&gt; Powered by
-          <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> and
-          <a href="https://github.com/heiswayi/thinkspace" target="_blank">Thinkspace</a>; hosted on
-          <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-        </small>
-      </div>
-    </footer>
-
-    <script>
-      // Theme toggle functionality
-      function toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
+        <div class="scroll-indicator">
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
+    </main>
+
+    <!-- Content Sections -->
+    <section id="about" class="content-section">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-content">
+          I'm a Backend Engineer with <strong>6+ years' experience</strong> in Python, Django Rest Framework, and FastAPI.
+          I specialize in building <strong>scalable APIs, microservices, and distributed systems</strong> with PostgreSQL, Redis,
+          Docker, and Kubernetes. My recent work includes integrating <strong>LangChain/LLMs</strong> into production systems
+          and optimizing deployments on AWS and GCP.
+        </p>
+      </div>
+    </section>
+
+    <section id="education" class="content-section">
+      <div class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="section-content">
+          <div class="education-item">
+            <h3>Obafemi Awolowo University</h3>
+            <p class="education-details">B.Sc. Electronic & Electrical Engineering (2015 – 2021)</p>
+            <p class="education-achievement">🏆 2nd place nationally, IEEE Xtreme Programming Contest 15.0</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="content-section">
+      <div class="container">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="section-content">
+          <div class="experience-item">
+            <h3>Nomad Internet</h3>
+            <p class="role">Backend Engineer / Automation Specialist</p>
+            <p class="period">Dec 2024 – Present</p>
+            <p class="description">Automated billing & SIM activation workflows, reducing onboarding time by 40%.</p>
+          </div>
+          
+          <div class="experience-item">
+            <h3>Uburu.ai</h3>
+            <p class="role">Senior Backend Engineer</p>
+            <p class="period">Feb 2023 – Nov 2024</p>
+            <p class="description">Built OCR + ETL pipelines digitising 50k+ medical records for AI healthcare analytics.</p>
+          </div>
+          
+          <div class="experience-item">
+            <h3>Sendme.ng</h3>
+            <p class="role">Head of Engineering</p>
+            <p class="period">Mar 2022 – Jan 2023</p>
+            <p class="description">Scaled backend for 200k+ monthly users, introduced TDD & CI/CD pipelines.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="content-section">
+      <div class="container">
+        <h2 class="section-title">Key Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3>Languages</h3>
+            <p>Python (3.x), Go, Rust, JavaScript</p>
+          </div>
+          <div class="skill-category">
+            <h3>Frameworks</h3>
+            <p>Django, FastAPI, Flask, React</p>
+          </div>
+          <div class="skill-category">
+            <h3>Databases</h3>
+            <p>PostgreSQL, MySQL, MongoDB, Redis, DynamoDB</p>
+          </div>
+          <div class="skill-category">
+            <h3>Cloud & DevOps</h3>
+            <p>AWS, GCP, Docker, Kubernetes, Terraform, GitLab/GitHub CI/CD</p>
+          </div>
+          <div class="skill-category">
+            <h3>Testing & Quality</h3>
+            <p>TDD, Pytest, Flake8, Code Reviews</p>
+          </div>
+          <div class="skill-category">
+            <h3>AI & LLMs</h3>
+            <p>LangChain, LLMOps, OpenAI APIs</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="content-section">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+          <div class="project-item">
+            <h3>LLM-Powered Fintech APIs</h3>
+            <p>Reduced manual support by 35% through intelligent automation</p>
+          </div>
+          <div class="project-item">
+            <h3>E-commerce Scaling with Django</h3>
+            <p>Supported 200k+ users at <100ms latency</p>
+          </div>
+          <div class="project-item">
+            <h3>Healthcare Data Digitisation</h3>
+            <p>Processed 50k+ medical records for AI analytics</p>
+          </div>
+          <div class="project-item">
+            <h3>Cloud Cost Optimisation</h3>
+            <p>Cut AWS infrastructure spend by 20%</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
 
-      // Load saved theme or default to light
-      function loadTheme() {
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', savedTheme);
+      html {
+        scroll-behavior: smooth;
       }
 
-      // Initialize theme on page load
-      document.addEventListener('DOMContentLoaded', loadTheme);
-    </script>
+      body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        color: #e0e6ed;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Navigation */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(26, 26, 46, 0.9);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+      }
+
+      .nav-brand {
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        color: #8892b0;
+      }
+
+      .nav-social {
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-icon {
+        color: #8892b0;
+        font-size: 18px;
+        transition: color 0.3s ease;
+        text-decoration: none;
+      }
+
+      .nav-icon:hover {
+        color: #00d4ff;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 100px 40px 40px;
+      }
+
+      .hero-container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .hero-content {
+        display: grid;
+        grid-template-columns: 200px 1fr 300px;
+        gap: 60px;
+        align-items: center;
+      }
+
+      /* Side Navigation */
+      .side-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .nav-prefix {
+        color: #00d4ff;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      .nav-link {
+        color: #8892b0;
+        text-decoration: none;
+        font-size: 14px;
+        font-family: 'Courier New', monospace;
+        transition: color 0.3s ease;
+        padding-left: 20px;
+      }
+
+      .nav-link.active,
+      .nav-link:hover {
+        color: #00d4ff;
+      }
+
+      /* Hero Text */
+      .hero-main {
+        max-width: 600px;
+      }
+
+      .hero-title {
+        font-size: 4rem;
+        font-weight: 300;
+        margin-bottom: 30px;
+        color: #ccd6f6;
+      }
+
+      .highlight {
+        color: #00d4ff;
+      }
+
+      .hero-description {
+        font-size: 18px;
+        color: #8892b0;
+        margin-bottom: 20px;
+        line-height: 1.7;
+      }
+
+      .cv-buttons {
+        margin-top: 40px;
+      }
+
+      .cv-btn {
+        display: inline-block;
+        padding: 15px 30px;
+        border: 2px solid #00d4ff;
+        color: #00d4ff;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        background: transparent;
+        margin-right: 20px;
+      }
+
+      .cv-btn:hover {
+        background: rgba(0, 212, 255, 0.1);
+        transform: translateY(-2px);
+      }
+
+      /* Geometric Portrait */
+      .hero-visual {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .geometric-portrait {
+        width: 300px;
+        height: 400px;
+      }
+
+      .portrait-svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .animated-path {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: draw 2s ease-out forwards;
+      }
+
+      @keyframes draw {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      /* Scroll Indicator */
+      .scroll-indicator {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #8892b0;
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        40% {
+          transform: translateX(-50%) translateY(-10px);
+        }
+        60% {
+          transform: translateX(-50%) translateY(-5px);
+        }
+      }
+
+      /* Content Sections */
+      .content-section {
+        padding: 80px 40px;
+        border-top: 1px solid rgba(0, 212, 255, 0.1);
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        color: #ccd6f6;
+        margin-bottom: 40px;
+        font-weight: 300;
+      }
+
+      .section-content {
+        font-size: 18px;
+        color: #8892b0;
+        line-height: 1.8;
+      }
+
+      /* Education */
+      .education-item h3 {
+        color: #ccd6f6;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .education-details {
+        color: #00d4ff;
+        margin-bottom: 10px;
+      }
+
+      .education-achievement {
+        color: #8892b0;
+        font-style: italic;
+      }
+
+      /* Experience */
+      .experience-item {
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+      }
+
+      .experience-item:last-child {
+        border-bottom: none;
+      }
+
+      .experience-item h3 {
+        color: #ccd6f6;
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+      }
+
+      .role {
+        color: #00d4ff;
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+
+      .period {
+        color: #8892b0;
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+
+      .description {
+        color: #8892b0;
+        line-height: 1.6;
+      }
+
+      /* Skills */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .skill-category h3 {
+        color: #00d4ff;
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+      }
+
+      .skill-category p {
+        color: #8892b0;
+        line-height: 1.6;
+      }
+
+      /* Projects */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .project-item {
+        background: rgba(0, 212, 255, 0.05);
+        padding: 30px;
+        border: 1px solid rgba(0, 212, 255, 0.1);
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+
+      .project-item:hover {
+        transform: translateY(-5px);
+        border-color: rgba(0, 212, 255, 0.3);
+      }
+
+      .project-item h3 {
+        color: #ccd6f6;
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+      }
+
+      .project-item p {
+        color: #8892b0;
+        line-height: 1.6;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 15px 20px;
+        }
+
+        .nav-brand {
+          font-size: 14px;
+        }
+
+        .hero-content {
+          grid-template-columns: 1fr;
+          gap: 40px;
+          text-align: center;
+        }
+
+        .side-nav {
+          flex-direction: row;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .hero-description {
+          font-size: 16px;
+        }
+
+        .geometric-portrait {
+          width: 250px;
+          height: 300px;
+        }
+
+        .content-section {
+          padding: 60px 20px;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .skills-grid,
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </body>
 </html>
