@@ -95,7 +95,7 @@
   .pagination .next,
   .site-footer a {
     color: #FC6C85;
-    text-decoration: underline;
+    text-decoration: none;
     -webkit-transition: color 300ms linear;
     -moz-transition: color 300ms linear;
     transition: color 300ms linear;
@@ -128,7 +128,7 @@
     padding-top: 1.5em;
     margin-left: auto;
     margin-right: auto;
-    max-width: 800px;
+    max-width: 900px;
     font-weight: normal;
   }
   
@@ -205,7 +205,7 @@
   .container {
     margin-left: auto;
     margin-right: auto;
-    max-width: 800px;
+    max-width: 900px;
     font-weight: normal;
   }
 
@@ -268,6 +268,116 @@
     line-height: 1;
   }
   
+  /* BIO INTRO - Card with floated image */
+  
+  .bio-intro {
+    padding: 1.5em;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 1.5em;
+    overflow: hidden;
+  }
+
+  .bio-card {
+    float: right;
+    margin-left: 2em;
+    margin-bottom: 0.5em;
+    text-align: center;
+    width: 260px;
+  }
+
+  .bio-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+  }
+
+  .bio-card-info {
+    margin-top: 0.5em;
+    font-size: 0.8em;
+    color: #333;
+    line-height: 1.4;
+    word-break: break-word;
+  }
+
+  .bio-card-info strong {
+    display: block;
+    font-size: 1em;
+    color: #000;
+    margin-bottom: 0.15em;
+  }
+
+  .bio-card-links {
+    margin-top: 0.4em;
+  }
+
+  .bio-card-links a {
+    margin: 0 0.3em;
+    color: #FC6C85;
+    text-decoration: none;
+    font-size: 1em;
+  }
+
+  .bio-text p {
+    margin-bottom: 1em;
+    line-height: 1.7;
+  }
+
+  /* Selected Feature Section */
+
+  .selected-feature {
+    display: flex;
+    gap: 1.5em;
+    padding: 1em 0;
+    align-items: flex-start;
+  }
+
+  .feature-video {
+    flex-shrink: 0;
+    width: 340px;
+  }
+
+  .feature-video iframe {
+    width: 100%;
+    height: 190px;
+    border: none;
+    border-radius: 4px;
+  }
+
+  .feature-description {
+    flex: 1;
+  }
+
+  .feature-description p {
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* Responsive for bio and feature */
+  @media (max-width: 700px) {
+    .bio-card {
+      float: none;
+      margin: 0 auto 1.5em auto;
+    }
+
+    .bio-intro {
+      text-align: center;
+    }
+
+    .bio-text p {
+      text-align: left;
+    }
+
+    .selected-feature {
+      flex-direction: column;
+    }
+
+    .feature-video {
+      width: 100%;
+    }
+  }
+
   /* FOOTER */
   
   .site-footer {
