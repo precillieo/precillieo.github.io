@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Purpose Reset Framework</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0a0a0f;
+      --color-surface: #12121a;
+      --color-surface-elevated: #1a1a24;
+      --color-border: #2a2a3a;
+      --color-text: #e8e8ed;
+      --color-text-muted: #8888a0;
+      --color-accent: #ff6b4a;
+      --color-accent-glow: rgba(255, 107, 74, 0.3);
+      --color-builders: #ffd700;
+      --color-builders-bg: rgba(255, 215, 0, 0.08);
+      --color-stable: #4a9eff;
+      --color-stable-bg: rgba(74, 158, 255, 0.08);
+      --color-surviving: #ff6b6b;
+      --color-surviving-bg: rgba(255, 107, 107, 0.08);
+      --color-knowledge: #a855f7;
+      --color-mindset: #22d3ee;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      background: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 107, 74, 0.15), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(168, 85, 247, 0.08), transparent),
+        radial-gradient(ellipse 60% 40% at 20% 80%, rgba(34, 211, 238, 0.08), transparent);
+    }
+
+    .hero-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .hero h1 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(3rem, 10vw, 7rem);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--color-text) 0%, var(--color-text-muted) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      background: linear-gradient(135deg, var(--color-accent) 0%, #ff9a7a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--color-text-muted);
+      max-width: 600px;
+      margin-bottom: 3rem;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: var(--color-accent);
+      color: var(--color-bg);
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 100px;
+      transition: all 0.3s ease;
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px var(--color-accent-glow);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem 2rem;
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--color-border);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--color-accent);
+    }
+
+    /* Sections */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .section-title {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      color: var(--color-text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* The Core Model - Interactive Diagram */
+    #model {
+      background: var(--color-surface);
+      border-radius: 24px;
+      padding: 4rem 2rem;
+      margin: 2rem;
+    }
+
+    .model-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .matrix-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    /* SVG Matrix Diagram */
+    .matrix-svg {
+      width: 100%;
+      height: auto;
+    }
+
+    .matrix-quadrant {
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .matrix-quadrant:hover {
+      filter: brightness(1.2);
+    }
+
+    .matrix-quadrant.active {
+      filter: brightness(1.3);
+    }
+
+    /* Axis Labels */
+    .axis-label {
+      position: absolute;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .axis-label.knowledge {
+      left: 50%;
+      bottom: -3rem;
+      transform: translateX(-50%);
+      color: var(--color-knowledge);
+    }
+
+    .axis-label.mindset {
+      left: -4rem;
+      top: 50%;
+      transform: rotate(-90deg) translateX(-50%);
+      transform-origin: center;
+      color: var(--color-mindset);
+    }
+
+    /* Category Cards */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      margin-top: 2rem;
+    }
+
+    .category-card {
+      background: var(--color-surface-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .category-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-accent);
+    }
+
+    .category-card.builders {
+      border-left: 4px solid var(--color-builders);
+    }
+
+    .category-card.stable {
+      border-left: 4px solid var(--color-stable);
+    }
+
+    .category-card.surviving {
+      border-left: 4px solid var(--color-surviving);
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .category-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .builders .category-icon {
+      background: var(--color-builders-bg);
+    }
+
+    .stable .category-icon {
+      background: var(--color-stable-bg);
+    }
+
+    .surviving .category-icon {
+      background: var(--color-surviving-bg);
+    }
+
+    .category-name {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.5rem;
+    }
+
+    .category-formula {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .category-description {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .category-traits {
+      list-style: none;
+    }
+
+    .category-traits li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .category-traits li:last-child {
+      border-bottom: none;
+    }
+
+    .trait-bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-top: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .builders .trait-bullet { background: var(--color-builders); }
+    .stable .trait-bullet { background: var(--color-stable); }
+    .surviving .trait-bullet { background: var(--color-surviving); }
+
+    /* Middle Subtypes */
+    .middle-subtypes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px dashed var(--color-border);
+    }
+
+    .subtype {
+      padding: 1rem;
+      background: rgba(74, 158, 255, 0.05);
+      border-radius: 8px;
+    }
+
+    .subtype-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-stable);
+      margin-bottom: 0.5rem;
+    }
+
+    .subtype-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .subtype-desc {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+    }
+
+    /* The Formula Section */
+    #formula {
+      background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface) 100%);
+    }
+
+    .formula-display {
+      text-align: center;
+      padding: 3rem;
+      background: var(--color-surface-elevated);
+      border-radius: 24px;
+      border: 1px solid var(--color-border);
+      margin-bottom: 3rem;
+    }
+
+    .formula-equation {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .formula-equation .knowledge {
+      color: var(--color-knowledge);
+    }
+
+    .formula-equation .mindset {
+      color: var(--color-mindset);
+    }
+
+    .formula-equation .result {
+      color: var(--color-accent);
+    }
+
+    .formula-breakdown {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .formula-component {
+      text-align: left;
+      padding: 2rem;
+      background: var(--color-surface);
+      border-radius: 16px;
+      border: 1px solid var(--color-border);
+    }
+
+    .component-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .component-icon.map {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(168, 85, 247, 0.05) 100%);
+    }
+
+    .component-icon.engine {
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.2) 0%, rgba(34, 211, 238, 0.05) 100%);
+    }
+
+    .component-title {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .component-subtitle {
+      color: var(--color-text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .component-list {
+      list-style: none;
+    }
+
+    .component-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.9rem;
+    }
+
+    .component-list li:last-child {
+      border-bottom: none;
+    }
+
+    .component-list strong {
+      color: var(--color-text);
+    }
+
+    /* Transitions Section */
+    #transitions {
+      background: var(--color-bg);
+    }
+
+    .transition-flow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 4rem;
+    }
+
+    .flow-node {
+      padding: 1.5rem 2.5rem;
+      border-radius: 100px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.85rem;
+    }
+
+    .flow-node.low { background: var(--color-surviving-bg); color: var(--color-surviving); border: 1px solid var(--color-surviving); }
+    .flow-node.mid { background: var(--color-stable-bg); color: var(--color-stable); border: 1px solid var(--color-stable); }
+    .flow-node.high { background: var(--color-builders-bg); color: var(--color-builders); border: 1px solid var(--color-builders); }
+
+    .flow-arrow {
+      color: var(--color-text-muted);
+      font-size: 1.5rem;
+    }
+
+    /* Transition Cards */
+    .transition-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .transition-tab {
+      padding: 0.75rem 1.5rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 100px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .transition-tab:hover,
+    .transition-tab.active {
+      background: var(--color-accent);
+      color: var(--color-bg);
+      border-color: var(--color-accent);
+    }
+
+    .transition-content {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .transition-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .advice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .advice-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .advice-card h3 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .advice-card h3 span {
+      font-size: 1.5rem;
+    }
+
+    .advice-list {
+      list-style: none;
+    }
+
+    .advice-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .advice-list li:last-child {
+      border-bottom: none;
+    }
+
+    .advice-number {
+      color: var(--color-accent);
+      font-weight: 600;
+      min-width: 1.5rem;
+    }
+
+    /* Everyone Section */
+    #everyone {
+      background: var(--color-surface);
+      border-radius: 24px;
+      margin: 2rem;
+    }
+
+    .everyone-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .everyone-card {
+      background: var(--color-surface-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .everyone-card h3 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: var(--color-accent);
+    }
+
+    .everyone-card p {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .everyone-card ul {
+      list-style: none;
+    }
+
+    .everyone-card ul li {
+      padding: 0.5rem 0;
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .everyone-card ul li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--color-accent);
+    }
+
+    /* Quote Block */
+    .quote-block {
+      background: linear-gradient(135deg, var(--color-accent-glow) 0%, transparent 100%);
+      border-left: 4px solid var(--color-accent);
+      padding: 2rem;
+      border-radius: 0 16px 16px 0;
+      margin: 3rem 0;
+    }
+
+    .quote-block blockquote {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.5rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--color-text-muted);
+      font-size: 0.85rem;
+    }
+
+    footer strong {
+      color: var(--color-text);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        gap: 1rem;
+        padding: 1rem;
+      }
+
+      nav a {
+        font-size: 0.75rem;
+      }
+
+      section {
+        padding: 4rem 1rem;
+      }
+
+      #model, #everyone {
+        margin: 1rem;
+        padding: 2rem 1rem;
+      }
+
+      .middle-subtypes {
+        grid-template-columns: 1fr;
+      }
+
+      .transition-flow {
+        flex-direction: column;
+      }
+
+      .flow-arrow {
+        transform: rotate(90deg);
+      }
+
+      .advice-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <a href="#model">The Model</a>
+    <a href="#formula">The Formula</a>
+    <a href="#transitions">Transitions</a>
+    <a href="#everyone">For Everyone</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <span class="hero-label">A Framework for Resetting Your Life</span>
+    <h1>The Purpose<br><em>Reset</em> Framework</h1>
+    <p class="hero-subtitle">
+      Understanding the two forces that determine where you end up in life — 
+      and how to move from surviving to stable, from stable to building.
+    </p>
+    <a href="#model" class="hero-cta">
+      Explore the Model
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M19 12l-7 7-7-7"/>
+      </svg>
+    </a>
+    <div class="scroll-indicator">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-muted)" stroke-width="2">
+        <path d="M12 5v14M19 12l-7 7-7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- The Core Model -->
+  <section id="model">
+    <div class="section-header">
+      <span class="section-label">The Core Model</span>
+      <h2 class="section-title">Three Types of People</h2>
+      <p class="section-subtitle">
+        After 6 years of professional and academic life, I've observed that life outcomes 
+        depend on two variables: what you know (the MAP) and your drive to execute (the ENGINE).
+      </p>
+    </div>
+
+    <div class="model-container">
+      <!-- Interactive Matrix SVG -->
+      <div class="matrix-wrapper">
+        <svg class="matrix-svg" viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background Grid -->
+          <defs>
+            <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+              <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#2a2a3a" stroke-width="0.5"/>
+            </pattern>
+            <linearGradient id="buildersGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#ffd700;stop-opacity:0.2"/>
+              <stop offset="100%" style="stop-color:#ffd700;stop-opacity:0.05"/>
+            </linearGradient>
+            <linearGradient id="stableGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#4a9eff;stop-opacity:0.15"/>
+              <stop offset="100%" style="stop-color:#4a9eff;stop-opacity:0.05"/>
+            </linearGradient>
+            <linearGradient id="stableGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#4a9eff;stop-opacity:0.1"/>
+              <stop offset="100%" style="stop-color:#4a9eff;stop-opacity:0.03"/>
+            </linearGradient>
+            <linearGradient id="survivingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:0.15"/>
+              <stop offset="100%" style="stop-color:#ff6b6b;stop-opacity:0.05"/>
+            </linearGradient>
+          </defs>
+          
+          <rect width="600" height="500" fill="url(#grid)"/>
+          
+          <!-- Axes -->
+          <line x1="100" y1="400" x2="550" y2="400" stroke="#4a4a5a" stroke-width="2"/>
+          <line x1="100" y1="400" x2="100" y2="50" stroke="#4a4a5a" stroke-width="2"/>
+          
+          <!-- Axis Arrows -->
+          <polygon points="550,400 540,395 540,405" fill="#4a4a5a"/>
+          <polygon points="100,50 95,60 105,60" fill="#4a4a5a"/>
+          
+          <!-- Axis Labels -->
+          <text x="325" y="450" text-anchor="middle" fill="#a855f7" font-size="14" font-weight="600" letter-spacing="2">
+            KNOWLEDGE (THE MAP)
+          </text>
+          <text x="40" y="225" text-anchor="middle" fill="#22d3ee" font-size="14" font-weight="600" letter-spacing="2" transform="rotate(-90, 40, 225)">
+            MINDSET (THE ENGINE)
+          </text>
+          
+          <!-- Low/High Labels -->
+          <text x="100" y="420" text-anchor="middle" fill="#666" font-size="11">Low</text>
+          <text x="550" y="420" text-anchor="middle" fill="#666" font-size="11">High</text>
+          <text x="75" y="400" text-anchor="middle" fill="#666" font-size="11">Low</text>
+          <text x="75" y="60" text-anchor="middle" fill="#666" font-size="11">High</text>
+          
+          <!-- Quadrants -->
+          <!-- Top Right: BUILDERS (High Knowledge + High Mindset) -->
+          <rect class="matrix-quadrant" x="325" y="60" width="215" height="170" rx="12" fill="url(#buildersGrad)" stroke="#ffd700" stroke-width="2"/>
+          <text x="432" y="120" text-anchor="middle" fill="#ffd700" font-size="18" font-weight="700">THE BUILDERS</text>
+          <text x="432" y="145" text-anchor="middle" fill="#ffd700" font-size="11" opacity="0.8">High Knowledge × High Mindset</text>
+          <text x="432" y="175" text-anchor="middle" fill="#888" font-size="10">Creators, unconventionals</text>
+          <text x="432" y="195" text-anchor="middle" fill="#888" font-size="10">Deep understanding, high agency</text>
+          
+          <!-- Top Left: STABLE Type A (Low Knowledge + High Mindset) -->
+          <rect class="matrix-quadrant" x="110" y="60" width="205" height="170" rx="12" fill="url(#stableGrad1)" stroke="#4a9eff" stroke-width="1.5" stroke-dasharray="5,3"/>
+          <text x="212" y="115" text-anchor="middle" fill="#4a9eff" font-size="14" font-weight="600">THE STABLE</text>
+          <text x="212" y="135" text-anchor="middle" fill="#4a9eff" font-size="10" opacity="0.8">Type A: The Hardworking</text>
+          <text x="212" y="165" text-anchor="middle" fill="#666" font-size="9">Super hardworking but</text>
+          <text x="212" y="180" text-anchor="middle" fill="#666" font-size="9">zero information/direction</text>
+          <text x="212" y="210" text-anchor="middle" fill="#4a9eff" font-size="9" font-style="italic">"Moved from low to mid through grit"</text>
+          
+          <!-- Bottom Right: STABLE Type B (High Knowledge + Low Mindset) -->
+          <rect class="matrix-quadrant" x="325" y="240" width="215" height="150" rx="12" fill="url(#stableGrad2)" stroke="#4a9eff" stroke-width="1.5" stroke-dasharray="5,3"/>
+          <text x="432" y="290" text-anchor="middle" fill="#4a9eff" font-size="14" font-weight="600">THE STABLE</text>
+          <text x="432" y="310" text-anchor="middle" fill="#4a9eff" font-size="10" opacity="0.8">Type B: The Knowledgeable</text>
+          <text x="432" y="340" text-anchor="middle" fill="#666" font-size="9">Insanely knowledgeable but</text>
+          <text x="432" y="355" text-anchor="middle" fill="#666" font-size="9">no strength to press on</text>
+          <text x="432" y="375" text-anchor="middle" fill="#4a9eff" font-size="9" font-style="italic">"Follows the script, just okay"</text>
+          
+          <!-- Bottom Left: SURVIVING (Low Knowledge + Low Mindset) -->
+          <rect class="matrix-quadrant" x="110" y="240" width="205" height="150" rx="12" fill="url(#survivingGrad)" stroke="#ff6b6b" stroke-width="2"/>
+          <text x="212" y="295" text-anchor="middle" fill="#ff6b6b" font-size="16" font-weight="700">THE SURVIVING</text>
+          <text x="212" y="318" text-anchor="middle" fill="#ff6b6b" font-size="10" opacity="0.8">Low Knowledge × Low Mindset</text>
+          <text x="212" y="348" text-anchor="middle" fill="#888" font-size="9">Captured by failed systems</text>
+          <text x="212" y="365" text-anchor="middle" fill="#888" font-size="9">Just trying to get through each day</text>
+          
+          <!-- Transition Arrows -->
+          <!-- Low to Mid -->
+          <path d="M 212 235 Q 212 200 260 145" fill="none" stroke="#666" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrowhead)"/>
+          <path d="M 320 315 Q 280 315 240 280" fill="none" stroke="#666" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrowhead)"/>
+          
+          <!-- Mid to High -->
+          <path d="M 320 145 Q 350 145 380 125" fill="none" stroke="#888" stroke-width="2" marker-end="url(#arrowhead)"/>
+          <path d="M 432 235 Q 432 200 432 175" fill="none" stroke="#888" stroke-width="2" marker-end="url(#arrowhead)"/>
+          
+          <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+              <polygon points="0 0, 10 3.5, 0 7" fill="#888"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+
+      <!-- Category Cards -->
+      <div class="categories-grid">
+        <!-- Builders Card -->
+        <div class="category-card builders">
+          <div class="category-header">
+            <div class="category-icon">🏗️</div>
+            <div>
+              <h3 class="category-name">The Builders</h3>
+              <p class="category-formula">High Knowledge × High Mindset</p>
+            </div>
+          </div>
+          <p class="category-description">
+            The creators and unconventionals who are not afraid of failing in company, ideas, 
+            research, movements, arts, or products.
+          </p>
+          <ul class="category-traits">
+            <li><span class="trait-bullet"></span>Insane hours of focused effort, constant learning, lot of failures</li>
+            <li><span class="trait-bullet"></span>Deep understanding of how things work (economics, institutions, networks)</li>
+            <li><span class="trait-bullet"></span>High agency, uncomfortable levels of responsibility</li>
+            <li><span class="trait-bullet"></span>Active in finances and investing</li>
+            <li><span class="trait-bullet"></span>Might be specializing or a generalist — but always building</li>
+          </ul>
+        </div>
+
+        <!-- Stable Card -->
+        <div class="category-card stable">
+          <div class="category-header">
+            <div class="category-icon">⚖️</div>
+            <div>
+              <h3 class="category-name">The Stable</h3>
+              <p class="category-formula">High in one, Low in the other</p>
+            </div>
+          </div>
+          <p class="category-description">
+            The autopilots — some savings, family, goes on a walk with the dog every evening, 
+            many or few friends. Just okay.
+          </p>
+          <ul class="category-traits">
+            <li><span class="trait-bullet"></span>Follows the script: high school → university → job → maybe promotions</li>
+            <li><span class="trait-bullet"></span>Doesn't ask too many questions</li>
+            <li><span class="trait-bullet"></span>Might be knowledgeable OR hardworking, but not both</li>
+          </ul>
+          
+          <div class="middle-subtypes">
+            <div class="subtype">
+              <p class="subtype-label">Type A</p>
+              <p class="subtype-title">The Hardworking</p>
+              <p class="subtype-desc">Super hardworking, moved from low to mid through pure grit — but zero direction or information</p>
+            </div>
+            <div class="subtype">
+              <p class="subtype-label">Type B</p>
+              <p class="subtype-title">The Knowledgeable</p>
+              <p class="subtype-desc">Insanely knowledgeable but no strength, drive, or courage to press on and execute</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Surviving Card -->
+        <div class="category-card surviving">
+          <div class="category-header">
+            <div class="category-icon">🌊</div>
+            <div>
+              <h3 class="category-name">The Surviving</h3>
+              <p class="category-formula">Low Knowledge × Low Mindset</p>
+            </div>
+          </div>
+          <p class="category-description">
+            Mostly poor. Life is unstable. Captured by failing or failed systems — bills, 
+            family issues, random jobs.
+          </p>
+          <ul class="category-traits">
+            <li><span class="trait-bullet"></span>Underdeveloped mind, doesn't read</li>
+            <li><span class="trait-bullet"></span>Just trying to survive each day</li>
+            <li><span class="trait-bullet"></span>No proper education or exposure to systems that could help</li>
+            <li><span class="trait-bullet"></span>Trapped in cycles that feel impossible to break</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Formula Section -->
+  <section id="formula">
+    <div class="section-header">
+      <span class="section-label">The Formula</span>
+      <h2 class="section-title">MAP × ENGINE = Destination</h2>
+      <p class="section-subtitle">
+        Knowledge tells you where to go. Mindset gets you there. 
+        You need both to reach the highest levels.
+      </p>
+    </div>
+
+    <div class="formula-display">
+      <p class="formula-equation">
+        <span class="knowledge">Knowledge</span> (what you know) × 
+        <span class="mindset">Mindset</span> (your drive) = 
+        <span class="result">Your Life Outcome</span>
+      </p>
+      <p style="color: var(--color-text-muted); font-size: 0.9rem;">
+        Academic knowledge alone cannot make wealth for you. A job is a short-term solution to a long-term problem.
+      </p>
+    </div>
+
+    <div class="formula-breakdown">
+      <!-- Knowledge Component -->
+      <div class="formula-component">
+        <div class="component-icon map">🗺️</div>
+        <h3 class="component-title">Knowledge (The MAP)</h3>
+        <p class="component-subtitle">Information that shows you the path</p>
+        <ul class="component-list">
+          <li>
+            <strong>Your Truth</strong> — Purpose, character, work, relationships
+          </li>
+          <li>
+            <strong>Self Knowledge</strong> — Gifts, weaknesses, passions, limits, seasons
+          </li>
+          <li>
+            <strong>World & Systems</strong> — Career, school, money, opportunities, technology
+          </li>
+          <li>
+            <strong>Skills</strong> — How to study, write a CV, design, lead, communicate, manage time
+          </li>
+        </ul>
+      </div>
+
+      <!-- Mindset Component -->
+      <div class="formula-component">
+        <div class="component-icon engine">⚡</div>
+        <h3 class="component-title">Mindset (The ENGINE)</h3>
+        <p class="component-subtitle">The force that moves you forward</p>
+        <ul class="component-list">
+          <li>
+            <strong>Consistency</strong> — Showing up every single day
+          </li>
+          <li>
+            <strong>Grit & Tenacity</strong> — Refusing to give up when it gets hard
+          </li>
+          <li>
+            <strong>Perseverance</strong> — Pushing through failures and setbacks
+          </li>
+          <li>
+            <strong>Focus & Discipline</strong> — Staying on the path, ignoring distractions
+          </li>
+          <li>
+            <strong>Hard Work</strong> — Putting in the hours, especially when you don't feel like it
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <blockquote>
+        "The single greatest skill you can develop is the ability to stay in a great mood 
+        in the absence of things to be in a great mood about."
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Transitions Section -->
+  <section id="transitions">
+    <div class="section-header">
+      <span class="section-label">The Pathways</span>
+      <h2 class="section-title">How to Transition</h2>
+      <p class="section-subtitle">
+        Practical, real advice for moving from one level to the next. 
+        Pick your current situation and find your path.
+      </p>
+    </div>
+
+    <div class="transition-flow">
+      <span class="flow-node low">Surviving</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node mid">Stable</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node high">Builders</span>
+    </div>
+
+    <div class="transition-tabs">
+      <button class="transition-tab active" data-tab="students">📚 Students</button>
+      <button class="transition-tab" data-tab="workers">💼 9-5 Workers</button>
+      <button class="transition-tab" data-tab="brand">🎯 Building a Brand</button>
+      <button class="transition-tab" data-tab="interests">🎨 Multiple Interests</button>
+      <button class="transition-tab" data-tab="startup">🚀 Starting Up</button>
+    </div>
+
+    <!-- Students Content -->
+    <div class="transition-content active" id="students">
+      <h3 style="text-align: center; margin-bottom: 2rem; font-family: 'Instrument Serif', serif; font-size: 1.5rem;">
+        How to Get the Best Out of Your Degree
+      </h3>
+      <div class="advice-grid">
+        <div class="advice-card">
+          <h3><span>🎯</span> Focus & Environment</h3>
+          <ul class="advice-list">
+            <li><span class="advice-number">1.</span> Get your focus back. Some of you can't even study for 1 hour straight. Practice focus. When you notice you're distracted, snap out of it, over and over until it becomes second nature.</li>
+            <li><span class="advice-number">2.</span> Your uni days might be one of the best seasons of your life. I won't say have many friends, just don't walk alone. That is a bad thing to do in a school environment.</li>
+            <li><span class="advice-number">3.</span> The people you walk with determines your outcome. If you are the best among your friends, that is the best you can ever be.</li>
+          </ul>
+        </div>
+        <div class="advice-card">
+          <h3><span>🤝</span> Relationships</h3>
+          <ul class="advice-list">
+            <li><span class="advice-number">4.</span> Make friends with your professors. They want to talk to you more than you can imagine. You might even get bonus marks for knowing them.</li>
+            <li><span class="advice-number">5.</span> Try to have a senior friend from your department. They tell you whose professor's courses to take and the ones to avoid.</li>
+            <li><span class="advice-number">6.</span> Have two to five people you can bet on.</li>
+            <li><span class="advice-number">7.</span> Find a professor who you think can help your life.</li>
+          </ul>
+        </div>
+        <div class="advice-card">
+          <h3><span>📖</span> Learning</h3>
+          <ul class="advice-list">
+            <li><span class="advice-number">8.</span> Do assignments early. You need those TAs, TAs are more open to share when deadlines are not too close.</li>
+            <li><span class="advice-number">9.</span> Learn outside of your classroom. Khan academy, YouTube.</li>
+            <li><span class="advice-number">10.</span> Take practical classes.</li>
+            <li><span class="advice-number">11.</span> Feel like you are not connected to your program, is it too late to switch? If yes, learn outside of your degree. Start now.</li>
+          </ul>
+        </div>
+        <div class="advice-card">
+          <h3><span>🌍</span> Beyond Academics</h3>
+          <ul class="advice-list">
+            <li><span class="advice-number">12.</span> Join communities, not always be black in whatever communities. Join the intellectual ones, departmental ones and participate.</li>
+            <li><span class="advice-number">13.</span> In Canada, maybe try not to graduate without coop. Get work experience.</li>
+            <li><span class="advice-number">14.</span> Learn to cold email.</li>
+            <li><span class="advice-number">15.</span> Start something and volunteer - you need to learn execution. That is a good time to fail too.</li>
+            <li><span class="advice-number">16.</span> Take breaks, that is the most free time of your life. Figure out what you are good at and bad at.</li>
+            <li><span class="advice-number">17.</span> Be grateful.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9-5 Workers Content -->
+    <div class="transition-content" id="workers">
+      <h3 style="text-align: center; margin-bottom: 2rem; font-family: 'Instrument Serif', serif; font-size: 1.5rem;">
+        Managing Yourself in the Corporate World
+      </h3>
+      <div class="advice-grid">
+        <div class="advice-card">
+          <h3><span>🏢</span> Navigating the Workplace</h3>
+          <ul class="advice-list">
+            <li><span class="advice-number">1.</span> If you are remote, you might need to work loudly. Make your work visible.</li>
+            <li><span class="advice-number">2.</span> Enjoy the present. Don't be over fixated on the future.</li>
+            <li><span class="advice-number">3.</span> Try to be a team player. Be empathetic to people. Help when you know the answer.</li>
+            <li><span class="advice-number">4.</span> Develop mastery - this leads to confidence - don't speak just to speak. Be someone of substance.</li>
+          </ul>
+        </div>
+        <div class="advice-card">
+          <h3><span>📈</span> Growth & Politics</h3>
+          <ul class="advice-list">
+            <li><span class="advice-number">5.</span> If you struggle with connecting to coworkers, you might need extra push to speak more. Otherwise be anchored in your truth.</li>
+            <li><span class="advice-number">6.</span> Don't play games. Don't be fake. Know who has the power to promote you and align your values with theirs.</li>
+            <li><span class="advice-number">7.</span> Keep a brag document for those reviews.</li>
+          </ul>
+        </div>
+        <div class="advice-card">
+          <h3><span>🛡️</span> Future-Proofing</h3>
+          <ul class="advice-list">
+            <li><span class="advice-number">8.</span> You might get laid off at some point, always plan for the unexpected. Don't be afraid to build something on the side.</li>
+            <li><span class="advice-number">9.</span> A job is a short-term solution to a long-term problem. Use your job to learn, save, and build.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Building a Brand Content -->
+    <div class="transition-content" id="brand">
+      <h3 style="text-align: center; margin-bottom: 2rem; font-family: 'Instrument Serif', serif; font-size: 1.5rem;">
+        Building Your Personal Brand
+      </h3>
+      <div class="advice-grid">
+        <div class="advice-card">
+          <h3><span>🎯</span> The Mindset</h3>
+          <ul class="advice-list">
+            <li><span class="advice-number">1.</span> This is a journey, not birthed out of rash desire to make money or be influential. Think about the journey like this:</li>
+            <li><span class="advice-number">2.</span> <strong>Goal</strong> (what do you want out of life) → <strong>Brand</strong> (what are you helping people achieve)</li>
+            <li><span class="advice-number">3.</span> <strong>Knowledge</strong> (what are you learning along the way) → <strong>Content</strong> (what is useful for them to know)</li>
+            <li><span class="advice-number">4.</span> <strong>Process</strong> (how did you reach a desirable goal) → <strong>Product</strong> (how can you help them reach it faster)</li>
+          </ul>
+        </div>
+        <div class="advice-card">
+          <h3><span>🌐</span> The Execution</h3>
+          <ul class="advice-list">
+            <li><span class="advice-number">5.</span> You need a website.</li>
+            <li><span class="advice-number">6.</span> Don't pick complicated domain names. Mine is complicated.</li>
+            <li><span class="advice-number">7.</span> Find services like WES, Square space, get someone to do it for you. If you know a bit about coding, use github.io. Free hosting.</li>
+            <li><span class="advice-number">8.</span> LinkedIn is just important. Period.</li>
+            <li><span class="advice-number">9.</span> Resume building — always keep it updated.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Multiple Interests Content -->
+    <div class="transition-content" id="interests">
+      <h3 style="text-align: center; margin-bottom: 2rem; font-family: 'Instrument Serif', serif; font-size: 1.5rem;">
+        When You Have Multiple Interests
+      </h3>
+      <div class="advice-grid">
+        <div class="advice-card">
+          <h3><span>🔍</span> Understanding Yourself</h3>
+          <ul class="advice-list">
+            <li><span class="advice-number">1.</span> Don't be stuck in tutorial hell.</li>
+            <li><span class="advice-number">2.</span> You need a vessel - to channel all your interests into meaningful work.</li>
+            <li><span class="advice-number">3.</span> You are lucky to have multiple interests - those who spend their life performing a few simple operations become stupid and ignorant.</li>
+            <li><span class="advice-number">4.</span> But indulging in short-lived pleasures is usually not interest. Might be laziness. Check yourself.</li>
+          </ul>
+        </div>
+        <div class="advice-card">
+          <h3><span>🎓</span> Self Education</h3>
+          <ul class="advice-list">
+            <li><span class="advice-number">5.</span> Self education - direct your own learning (since it is not the traditional education).</li>
+            <li><span class="advice-number">6.</span> Let your self interest motivate self education and self education enable self sufficiency.</li>
+            <li><span class="advice-number">7.</span> Check yourself well, sometimes you don't have multiple interests, just dust your cv and go find one job.</li>
+          </ul>
+        </div>
+        <div class="advice-card">
+          <h3><span>🚀</span> The Builder Path</h3>
+          <ul class="advice-list">
+            <li><span class="advice-number">8.</span> Start from somewhere.</li>
+            <li><span class="advice-number">9.</span> Multiple interest sometimes is advantageous and can get you to be THE BUILDER Lane, because you get to see what others are missing, which can become a product potentially.</li>
+            <li><span class="advice-number">10.</span> To Build, in this century. You might need to create.</li>
+            <li><span class="advice-number">11.</span> Don't over plan. Take a step even if you don't feel comfortable. Shut your brain off and do what needs to be done.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Starting Up Content -->
+    <div class="transition-content" id="startup">
+      <h3 style="text-align: center; margin-bottom: 2rem; font-family: 'Instrument Serif', serif; font-size: 1.5rem;">
+        Starting a Company/Startup
+      </h3>
+      <div class="advice-grid">
+        <div class="advice-card">
+          <h3><span>🚀</span> First Steps</h3>
+          <ul class="advice-list">
+            <li><span class="advice-number">1.</span> Make sure to get an experience first. Work somewhere to understand how businesses operate.</li>
+            <li><span class="advice-number">2.</span> Your multiple interests can become your edge - you see gaps others miss.</li>
+            <li><span class="advice-number">3.</span> Start with a problem - amplify how it leads to a negative outcome - then the solution.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Everyone Section -->
+  <section id="everyone">
+    <div class="section-header">
+      <span class="section-label">Universal Truths</span>
+      <h2 class="section-title">For Everyone</h2>
+      <p class="section-subtitle">
+        Regardless of where you are, these fundamentals apply to all.
+      </p>
+    </div>
+
+    <div class="everyone-grid">
+      <!-- Communication -->
+      <div class="everyone-card">
+        <h3>🗣️ Communication is Everything</h3>
+        <p>If you cannot speak, write. If you cannot write, speak. If you can do the two, the better you are.</p>
+        <ul>
+          <li>Learn. If you don't know what to learn, practice writing. It teaches you how to think, how to learn. In writing, be expressive.</li>
+          <li>Never care about grammar or how clever you sound the first times.</li>
+          <li>You might get intimidated if there is a more outspoken person in the room. That is okay.</li>
+          <li>You may need to push yourself several times. Do it.</li>
+          <li>You gain confidence by telling yourself you can do something and actually doing it.</li>
+        </ul>
+      </div>
+
+      <!-- Speaking -->
+      <div class="everyone-card">
+        <h3>🎤 How to Speak</h3>
+        <ul>
+          <li>Start with Problem → Amplify (how it leads to a negative outcome) → then solution.</li>
+          <li>Learn through practice writing. It teaches you how to think.</li>
+          <li>You may need to push yourself several times. Do it.</li>
+          <li>You gain confidence by doing, not by thinking about doing.</li>
+        </ul>
+      </div>
+
+      <!-- Writing -->
+      <div class="everyone-card">
+        <h3>✍️ How to Write</h3>
+        <ul>
+          <li>Writing starts with reading. If you have a topic, find similar articles online, read what the authors have said, close their work, without the thought of plagiarism, express what you have just read in your own words.</li>
+          <li>Writing is an expression, don't hold back. Think freely, never care about the smartness in the writing while you are at it, you can edit later, just pour it out.</li>
+          <li>Writing is the best way to get good at writing. Same as speaking.</li>
+        </ul>
+      </div>
+
+      <!-- The 5 Pillars -->
+      <div class="everyone-card">
+        <h3>🏛️ The 5 Career Pillars</h3>
+        <p>When thinking about your career, consider these five dimensions:</p>
+        <ul>
+          <li><strong>People</strong> — Who are you working with? Who are you learning from?</li>
+          <li><strong>Pace</strong> — How fast are you growing? Is the environment pushing you?</li>
+          <li><strong>Learning</strong> — Are you acquiring new skills and knowledge?</li>
+          <li><strong>Prestige</strong> — Does this role open doors for future opportunities?</li>
+          <li><strong>Profit</strong> — Are you being compensated fairly for your value?</li>
+        </ul>
+      </div>
+
+      <!-- AI & Learning -->
+      <div class="everyone-card">
+        <h3>🤖 On AI & Learning</h3>
+        <ul>
+          <li>For your own learning, try and use as little AI as possible. Or train yourself to use AI for learning, not for doing the work entirely.</li>
+          <li>The goal is to build your own understanding, not outsource your thinking.</li>
+        </ul>
+      </div>
+
+      <!-- Key Insight -->
+      <div class="everyone-card" style="background: linear-gradient(135deg, var(--color-accent-glow) 0%, var(--color-surface-elevated) 100%); border-color: var(--color-accent);">
+        <h3>💡 The Key Insight</h3>
+        <p style="font-family: 'Instrument Serif', serif; font-size: 1.2rem; color: var(--color-text); line-height: 1.6;">
+          Knowing yourself and what you want to become helps you put in the right amount of effort into becoming that. 
+          If you want to be insanely great like Aristotle or Elon, you can't be doing the bare minimum — there is an effort required, insane effort at it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong>The Purpose Reset Framework</strong></p>
+    <p>Developed from 6 years of professional and academic observation</p>
+    <p style="margin-top: 1rem;">© Precious Kolawole</p>
+  </footer>
+
+  <script>
+    // Tab switching functionality
+    document.querySelectorAll('.transition-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active from all tabs
+        document.querySelectorAll('.transition-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.transition-content').forEach(c => c.classList.remove('active'));
+        
+        // Add active to clicked tab
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Matrix quadrant hover effects
+    document.querySelectorAll('.matrix-quadrant').forEach(quad => {
+      quad.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.02)';
+      });
+      quad.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+      });
+    });
+  </script>
+</body>
+</html>
