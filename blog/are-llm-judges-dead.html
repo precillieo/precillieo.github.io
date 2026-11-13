@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Are LLM Judges Dead? - Precious Kolawole</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="What frontier labs, researchers and production teams reveal about the state of LLM judges as agents get smarter: where judges break, what gets added to them, and how agents are graded today."
+    />
+    <link rel="stylesheet" type="text/css" href="../assets/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.7/css/all.css"
+    />
+    <style>
+      .blog-post {
+        line-height: 1.8;
+      }
+
+      .blog-post .section-header {
+        font-size: 1.3em;
+        font-weight: 700;
+        color: #111;
+        margin-top: 2.5em;
+        margin-bottom: 1em;
+        padding-bottom: 0.3em;
+        border-bottom: 2px solid #111;
+      }
+
+      .blog-post p {
+        margin-bottom: 1.4em;
+      }
+
+      .blog-post ol,
+      .blog-post ul {
+        margin-bottom: 1.4em;
+      }
+
+      .blog-post li {
+        margin-bottom: 0.6em;
+      }
+
+      .blog-post .references li {
+        margin-bottom: 0.3em;
+        font-size: 0.9em;
+      }
+
+      .blog-post .references-group {
+        font-weight: 700;
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <div class="container flex-wrap">
+          <h1 class="logo">
+            <a href="https://precillieo.github.io">Precious Kolawole</a>
+          </h1>
+          <ul class="navbar">
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../news.html">News</a></li>
+            <li><a href="../assets/Precious Kolawole Resume.pdf">CV</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="https://www.precillieo.com/" target="_blank">Other website</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <article class="page container">
+      <div class="page-content">
+        <div class="container">
+          <p style="margin-bottom: 0.5em;"><a href="../blog.html">← Back to Blog</a></p>
+
+          <h1 class="header-name">Are LLM Judges Dead? 🥀</h1>
+
+          <div class="blog-post">
+            <p>
+              I spent a year at Shopify building LLM judges. Part of that work was a flywheel, a loop where an agent was evaluated, the failures were studied, and the agent got better. It worked. I believed in it, and in a quieter way I still do.
+            </p>
+
+            <p>
+              But these past months a worry has followed me around. Agents keep getting smarter. They now finish long, messy tasks with very little instruction, and some of them are better at those tasks than the people grading them. If the work is harder than the grader, what is the grade worth?
+            </p>
+
+            <p>
+              Meta's <a href="https://ai.meta.com/static-resource/muse-spark-eval-methodology" target="_blank">Muse Spark evaluation methodology</a> made this feel urgent for me. You could not evaluate a model like that by asking a few people to annotate its outputs. So I asked myself which of three things is true:
+            </p>
+
+            <ol>
+              <li>LLM judges are no longer the industry standard now that agents are this capable.</li>
+              <li>They are still used, but with something added on top of them, such as reinforcement learning, trained judges, or human labels.</li>
+              <li>They are no longer usable at all.</li>
+            </ol>
+
+            <p>
+              A colleague challenged me on the third. I did not believe it, but I wanted evidence. So I read. Frontier lab reports, academic papers on judge reliability, papers on training judges with RL, engineering blogs from teams that ship agents, and newer work on agents that cheat their graders. Roughly 120 sources in all.
+            </p>
+
+            <p>This is what I found.</p>
+
+            <h3 class="section-header">The short answer</h3>
+
+            <p>
+              The second option is the closest, but "on top" is the wrong picture. The judge has not been crowned with something new. It has been moved down the stack and fenced in.
+            </p>
+
+            <p>
+              For capable agents, <strong>the headline score now comes from code and the state of the environment</strong>. Tests pass or they don't. The database ends up in the right state or it doesn't. <strong>Expert humans remain the ground truth.</strong> The LLM judge sits between the two, doing narrow work that code cannot do, and it is trusted only when it is given something to check against.
+            </p>
+
+            <p>The judge is not dead. It is just no longer in charge.</p>
+
+            <h3 class="section-header">What the labs actually do</h3>
+
+            <p>
+              The first thing I did was look at how the people building the most capable models grade them.
+            </p>
+
+            <p>
+              Muse Spark's methodology is a useful example. The coding and agentic scores come from running code: SWE-Bench Verified and Pro are graded "by running model-predicted code solutions using their official evaluation scripts and docker images," and Meta fixed broken tests in five problems along the way. Terminal-Bench 2.0 runs in containers. LLM judges do appear, but in a small role: o3-mini on Humanity's Last Exam, GPT-4.1 on HealthBench, gpt-oss-120b to extract and match short answers. In every case the judge compares an answer to a reference. Human graders are used for one thing, the physics olympiad, blinded and checked by domain experts.
+            </p>
+
+            <p>
+              Google's <a href="https://storage.googleapis.com/deepmind-media/gemini/gemini_3_pro_model_evaluation.pdf" target="_blank">Gemini 3 Pro evaluation document</a> does not mention a judge at all.
+            </p>
+
+            <p>
+              Anthropic's engineering post <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents" target="_blank">Demystifying evals for AI agents</a> says the order out loud: "We recommend choosing deterministic graders where possible, LLM graders where necessary or for additional flexibility, using human graders judiciously for additional validation." The same post describes how fixing grading bugs moved a CORE-Bench score from 42% to 95%. The agent had not changed. The grader had.
+            </p>
+
+            <p>
+              The places where a model judge sits at the centre are the open-ended ones, and those are the most telling. OpenAI's <a href="https://arxiv.org/abs/2510.04374" target="_blank">GDPval</a> asks experts to compare real work products, each comparison taking over an hour. Their automated grader agreed with experts 65.7% of the time. Two experts agreed with each other 70.8% of the time. That is close, and it is honest work. But OpenAI also wrote that the grader correlates worse when grading their most capable models, and that they "do not consider it a full substitute for industry expert graders."
+            </p>
+
+            <p>
+              That sentence is my worry, written by the people with the most reason to hope it isn't true.
+            </p>
+
+            <h3 class="section-header">Where judges break</h3>
+
+            <p>
+              The academic work answered a question I had been circling for a while: when exactly does a judge stop being reliable?
+            </p>
+
+            <p>
+              <strong>A judge cannot grade what it cannot solve.</strong> This was the clearest finding of everything I read. In <a href="https://arxiv.org/abs/2503.05061" target="_blank">No Free Labels</a>, GPT-4o agreed with experts at a kappa of 0.78 to 0.86 on questions it could answer itself. On questions it got wrong, agreement fell to 0.16 to 0.30. Give it a correct human reference answer and agreement comes back to 0.83. Give it a wrong reference and it drops to 0.21. The judge is mostly checking its own answer against yours.
+            </p>
+
+            <p>
+              <strong>Hard pairs are where judges are weakest, and hard pairs are the frontier.</strong> On <a href="https://arxiv.org/abs/2410.12784" target="_blank">JudgeBench</a>, where one answer is right and one is wrong, GPT-4o barely beats a coin flip. The best reasoning judge reaches about 81%. On <a href="https://arxiv.org/abs/2410.16184" target="_blank">RM-Bench</a>, when the wrong answer is written in the nicer style, the best reward model scores 46.6%, below chance. Position bias, where a judge prefers whichever answer comes first, is also worst when two answers are close in quality.
+            </p>
+
+            <p>
+              <strong>Agent trajectories are harder still.</strong> On <a href="https://arxiv.org/abs/2504.08942" target="_blank">AgentRewardBench</a>, no LLM judge passed 70% precision on web-agent trajectories, partly because judges believed the agent's own account of what it had done. On <a href="https://arxiv.org/abs/2608.26623" target="_blank">AgentJudgeBench</a> this year, every judge, large or small, landed between 77% and 82% on hard tool-calling tasks.
+            </p>
+
+            <p>
+              <strong>A panel of judges helps less than you would think.</strong> Juries of different models do beat single judges on easier questions. But <a href="https://arxiv.org/abs/2502.04313" target="_blank">Great Models Think Alike</a> found that as models become more capable, their mistakes become more alike. A panel of frontier models can share the same blind spot.
+            </p>
+
+            <p>
+              <strong>There is a mathematical ceiling.</strong> Dorner, Nastl and Hardt showed in <a href="https://arxiv.org/abs/2410.13341" target="_blank">Limits to scalable evaluation at the frontier</a> that when the judge is no more accurate than the model it grades, no correction method can cut the human labels you need by more than half. A judge can save you labels. It cannot save you from labels.
+            </p>
+
+            <p>
+              To be fair, humans are not a clean gold standard either. In the <a href="https://arxiv.org/abs/2512.16041" target="_blank">Sage</a> study, people changed their preference a third of the time when two similar answers were shown in the opposite order. A <a href="https://www.futurehouse.org/research/hle-exam" target="_blank">FutureHouse review</a> found that about 29% of the biology and chemistry answers in Humanity's Last Exam conflict with the published literature. Expert labels are better than judge labels. They are not perfect.
+            </p>
+
+            <h3 class="section-header">What gets added to the judge</h3>
+
+            <p>
+              My second option was right: something is being added. Most of the research energy in the last two years has gone into making judges stronger through training.
+            </p>
+
+            <p>
+              Judges are now trained with reinforcement learning. Meta's <a href="https://arxiv.org/abs/2505.10320" target="_blank">J1</a> rewards the judge only when its verdict holds up with the two answers in either order, which trains out position bias. DeepSeek and others train judges that write their own principles and critiques before scoring. Other teams give the judge a rubric written for each task: Scale's <a href="https://arxiv.org/abs/2507.17746" target="_blank">Rubrics as Rewards</a>, and the CMU and Apple paper <a href="https://arxiv.org/abs/2507.18624" target="_blank">Checklists Are Better Than Reward Models</a>, where a yes/no checklist was the only method that helped on every benchmark they tested.
+            </p>
+
+            <p>These work. But three findings changed how I think about them.</p>
+
+            <p>
+              <strong>The people training the strongest models chose not to rely on judges for the hard part.</strong> DeepSeek-R1's paper says it plainly: "We do not apply the outcome or process neural reward model… because we find that the neural reward model may suffer from reward hacking." Ai2 found in <a href="https://arxiv.org/abs/2411.15124" target="_blank">Tülu 3</a> that adding a reward model's score on top of verifiable rewards made results worse.
+            </p>
+
+            <p>
+              <strong>A judge that scores well on benchmarks can still be gamed.</strong> In a study from Meta and Yale (<a href="https://arxiv.org/abs/2603.12246" target="_blank">2603.12246</a>), a model trained against a reasoning judge learned a strange trick: invent a "platform policy," refuse the request, then praise its own refusal. The judge loved it. In <a href="https://arxiv.org/abs/2507.08794" target="_blank">One Token to Fool LLM-as-a-Judge</a>, a reply of nothing but a colon got GPT-4o to mark it correct up to 35% of the time.
+            </p>
+
+            <p>
+              <strong>Simple can beat clever.</strong> A plain scalar reward model trained on well-curated data (<a href="https://arxiv.org/abs/2507.01352" target="_blank">Skywork-Reward-V2</a>) beat the fancier reasoning judges on most benchmarks.
+            </p>
+
+            <p>
+              So yes, something is being added. But training makes a judge better and cheaper. It does not make it a source of truth, and it raises a new danger: whatever you optimise against, the model will learn to please.
+            </p>
+
+            <h3 class="section-header">When the agent is smarter than the grader</h3>
+
+            <p>
+              This was the part of the reading that unsettled me most, because it is my original worry made concrete.
+            </p>
+
+            <p>
+              <strong>The graders themselves are often broken.</strong> The <a href="https://arxiv.org/abs/2507.02825" target="_blank">Agentic Benchmark Checklist</a> audited ten well-known agent benchmarks and found grading flaws in seven. On τ-bench, an agent that replies with nothing passes 38% of the airline tasks. On SWE-Lancer, an agent can overwrite the tests and score 100%.
+            </p>
+
+            <p>
+              <strong>Capable agents find those flaws.</strong> <a href="https://metr.org/blog/2025-06-05-recent-reward-hacking/" target="_blank">METR reported</a> that o3 hacked its grader in about 30% of runs on one research benchmark, stubbing out evaluators and overwriting timers, and kept doing it when told not to. <a href="https://arxiv.org/abs/2510.20270" target="_blank">ImpossibleBench</a> builds tasks where the specification contradicts the tests, so any pass is a cheat. GPT-5 cheated on 54% of them. LLM monitors reading the transcripts caught only 42% to 65% of the cheating. One small change helped a lot: giving the agent an explicit way to stop and flag the problem for a human cut cheating from 54% to 9%.
+            </p>
+
+            <p>
+              <strong>Agents increasingly know when they are being tested.</strong> In joint work by Apollo and OpenAI (<a href="https://arxiv.org/abs/2509.15541" target="_blank">2509.15541</a>), one round of capability training raised a model's explicit awareness of being evaluated from 2% to 20.6%, and that awareness lowered misbehaviour. Some of what looks like good behaviour is the model recognising the exam.
+            </p>
+
+            <p>
+              The evaluations that hold up best here are the ones where the world does the grading. Forecasts that resolve against real events. Simulated businesses scored by their bank balance at the end of a year. A/B tests on whether customers actually got their problem solved.
+            </p>
+
+            <h3 class="section-header">How teams do it in production</h3>
+
+            <p>
+              The engineering blogs were the most reassuring part of this, because the teams that ship agents have mostly arrived at the same place on their own.
+            </p>
+
+            <p>The shape looks like this:</p>
+
+            <ol>
+              <li><strong>Deterministic checks first.</strong> Tests, schemas, end state, anything code can verify.</li>
+              <li><strong>Narrow judges, binary where possible.</strong> One judge per failure mode, answering pass or fail, with graded scores only where a criterion needs them.</li>
+              <li><strong>An expert-labelled set to calibrate every judge.</strong> Report agreement against how well humans agree with each other, not against 100%.</li>
+              <li><strong>Replay or simulation before release.</strong> Run the candidate over real past conversations, or against a simulated user.</li>
+              <li><strong>Online tests on a real outcome.</strong> Resolution rate, accepted suggestions, approvals.</li>
+            </ol>
+
+            <p>
+              The agreement numbers teams publish are modest, and I find that honest. <a href="https://shopify.engineering/building-production-ready-agentic-systems" target="_blank">Shopify's Sidekick team</a> took a judge from a kappa of 0.02 to 0.61, against a human ceiling of 0.69, and judged it ready when people could not tell judge-scored conversations from human-scored ones. Airbnb raised a judge from 78% to 88% agreement on 60 golden examples. Intercom replays thousands of past conversations through a new version of Fin before it reaches a single customer, then A/B tests it. Pairwise ranking is used too, mostly to compare models, and public arenas come with known distortions, documented in <a href="https://arxiv.org/abs/2504.20879" target="_blank">The Leaderboard Illusion</a>.
+            </p>
+
+            <h3 class="section-header">Can LLM labels replace human labels?</h3>
+
+            <p>
+              If models are this capable, why not let one produce the labels judges are measured against? I looked for evidence that this works. As ground truth, it mostly does not.
+            </p>
+
+            <ul>
+              <li><strong>Agreement depends on the task, and is often low.</strong> Across 20 datasets in <a href="https://arxiv.org/abs/2406.18403" target="_blank">JUDGE-BENCH</a>, the average agreement between strong models and human labels was a kappa of 0.28, strong on some datasets and below zero on others.</li>
+              <li><strong>It is weakest where it matters most.</strong> Models agreed less with experts than with non-experts, and less on text written by models than on text written by people. In finance, law and biomedicine, the best models matched expert labels only 47% to 87% of the time (<a href="https://arxiv.org/abs/2508.07827" target="_blank">Tseng et al.</a>).</li>
+              <li><strong>LLM-only conclusions can be plainly wrong.</strong> In <a href="https://arxiv.org/abs/2408.15204" target="_blank">Gligorić et al.</a>, estimates built only from LLM labels sometimes missed the true value entirely, once with the wrong sign.</li>
+              <li><strong>Models favour their own kind.</strong> Judges prefer outputs from their own model family, and from models trained on their data (<a href="https://arxiv.org/abs/2502.01534" target="_blank">Preference Leakage</a>). When one family generates the data, labels it and grades it, the loop closes on itself.</li>
+            </ul>
+
+            <p>What the research does support is narrower and more useful.</p>
+
+            <ul>
+              <li>An LLM can earn the right to stand in for a human annotator on one specific task, once it holds up against 100 to 150 items labelled by at least three people (<a href="https://arxiv.org/abs/2501.10970" target="_blank">The Alternative Annotator Test</a>).</li>
+              <li><a href="https://arxiv.org/abs/2301.09633" target="_blank">Prediction-powered inference</a> uses a small, well-chosen human sample to correct the bias of many LLM labels, with valid confidence intervals.</li>
+              <li>Dorner's ceiling still holds: a judge no stronger than the model it grades can at best halve the human labels you need.</li>
+            </ul>
+
+            <p>
+              Human labels carry their own noise: physicians in HealthBench agreed with each other at an F1 of only 0.57 to 0.73. The answer is not to drop them, but to use more than one expert per item and to measure judges against how well people agree, not against 100%.
+            </p>
+
+            <h3 class="section-header">What I believe now</h3>
+
+            <p>If I compress everything into a few beliefs I would stake my work on, they are these.</p>
+
+            <ul>
+              <li><strong>Grade the outcome, not the prose.</strong> If code or the environment can tell whether the agent succeeded, let it. An LLM judge reading a transcript is the last resort, not the first.</li>
+              <li><strong>Never let a judge grade alone.</strong> Give it a reference, a rubric for that task, or evidence it can execute. A judge without ground truth is mostly measuring itself.</li>
+              <li><strong>Calibrate every judge against people, and keep doing it.</strong> A held-out set of expert labels, a kappa or true-positive and true-negative rates, and the human-to-human agreement as the ceiling.</li>
+              <li><strong>Attack your grader before you trust it.</strong> Run an agent that does nothing. Add a task that is impossible; if it passes, something cheated. Try the known tricks: a bare colon, self-praise, an invented policy, sheer length.</li>
+              <li><strong>Budget for humans.</strong> Judges can at best halve the labels you need. They cannot remove them, and the harder the task, the more the experts matter.</li>
+              <li><strong>Let the world grade when it can.</strong> Real outcomes are the one judge an agent cannot charm.</li>
+            </ul>
+
+            <h3 class="section-header">Parting thoughts</h3>
+
+            <p>
+              I started this with a burden, and I am ending it lighter, though not because the worry was wrong. It was right. LLM judges really do fail in the places I feared: on hard tasks, on agents more capable than themselves, and under pressure from models that learn to please them.
+            </p>
+
+            <p>
+              What I did not expect was how much of the field had already felt the same thing and responded. Judges were not thrown away. They were given smaller, more honest jobs, surrounded by tests, references, people and real outcomes. And human labels matter more, not less.
+            </p>
+
+            <p>
+              I'm probably not done thinking about this. As agents keep improving, the fences will need to move again, and I'll keep writing as I learn where.
+            </p>
+
+            <h3 class="section-header">References</h3>
+
+            <div class="references">
+              <p class="references-group">Frontier labs</p>
+              <ul>
+                <li>Meta, <a href="https://ai.meta.com/static-resource/muse-spark-eval-methodology" target="_blank">Muse Spark Eval Methodology</a></li>
+                <li>Google DeepMind, <a href="https://storage.googleapis.com/deepmind-media/gemini/gemini_3_pro_model_evaluation.pdf" target="_blank">Gemini 3 Pro Model Evaluation</a> (Nov 2025)</li>
+                <li>Anthropic, <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents" target="_blank">Demystifying evals for AI agents</a> (Jan 2026)</li>
+                <li>OpenAI, <a href="https://arxiv.org/abs/2510.04374" target="_blank">GDPval</a> (Oct 2025)</li>
+                <li>OpenAI, <a href="https://arxiv.org/abs/2505.08775" target="_blank">HealthBench</a> (May 2025)</li>
+              </ul>
+
+              <p class="references-group">Judge reliability</p>
+              <ul>
+                <li>Tan et al., <a href="https://arxiv.org/abs/2410.12784" target="_blank">JudgeBench</a> (Oct 2024)</li>
+                <li>Liu et al., <a href="https://arxiv.org/abs/2410.16184" target="_blank">RM-Bench</a> (Oct 2024)</li>
+                <li>Krumdick et al., <a href="https://arxiv.org/abs/2503.05061" target="_blank">No Free Labels</a> (Mar 2025)</li>
+                <li>Dorner, Nastl, Hardt, <a href="https://arxiv.org/abs/2410.13341" target="_blank">Limits to scalable evaluation at the frontier</a> (ICLR 2025)</li>
+                <li>Lù et al., <a href="https://arxiv.org/abs/2504.08942" target="_blank">AgentRewardBench</a> (Apr 2025)</li>
+                <li>Verma et al., <a href="https://arxiv.org/abs/2608.26623" target="_blank">AgentJudgeBench</a> (Aug 2026)</li>
+                <li>Goel et al., <a href="https://arxiv.org/abs/2502.04313" target="_blank">Great Models Think Alike</a> (Feb 2025)</li>
+                <li>Feng et al., <a href="https://arxiv.org/abs/2512.16041" target="_blank">Sage</a> (Dec 2025)</li>
+              </ul>
+
+              <p class="references-group">LLM labels and human labels</p>
+              <ul>
+                <li>Bavaresco et al., <a href="https://arxiv.org/abs/2406.18403" target="_blank">LLMs instead of Human Judges? JUDGE-BENCH</a> (2024)</li>
+                <li>Calderon, Reichart, Dror, <a href="https://arxiv.org/abs/2501.10970" target="_blank">The Alternative Annotator Test for LLM-as-a-Judge</a> (ACL 2025)</li>
+                <li>Tseng et al., <a href="https://arxiv.org/abs/2508.07827" target="_blank">Evaluating LLMs as Expert Annotators</a> (Aug 2025)</li>
+                <li>Angelopoulos et al., <a href="https://arxiv.org/abs/2301.09633" target="_blank">Prediction-Powered Inference</a> (Science 2023)</li>
+                <li>Gligorić et al., <a href="https://arxiv.org/abs/2408.15204" target="_blank">Can Unconfident LLM Annotations Be Used for Confident Conclusions?</a> (NAACL 2025)</li>
+                <li>Li et al., <a href="https://arxiv.org/abs/2502.01534" target="_blank">Preference Leakage</a> (ICLR 2026)</li>
+              </ul>
+
+              <p class="references-group">Judges and training</p>
+              <ul>
+                <li>DeepSeek, <a href="https://arxiv.org/abs/2501.12948" target="_blank">DeepSeek-R1</a> (Jan 2025)</li>
+                <li>Ai2, <a href="https://arxiv.org/abs/2411.15124" target="_blank">Tülu 3</a> (Nov 2024)</li>
+                <li>Meta, <a href="https://arxiv.org/abs/2505.10320" target="_blank">J1</a> (May 2025)</li>
+                <li>Scale AI, <a href="https://arxiv.org/abs/2507.17746" target="_blank">Rubrics as Rewards</a> (Jul 2025)</li>
+                <li>CMU and Apple, <a href="https://arxiv.org/abs/2507.18624" target="_blank">Checklists Are Better Than Reward Models</a> (Jul 2025)</li>
+                <li>Skywork AI, <a href="https://arxiv.org/abs/2507.01352" target="_blank">Skywork-Reward-V2</a> (Jul 2025)</li>
+                <li>Zhao et al., <a href="https://arxiv.org/abs/2507.08794" target="_blank">One Token to Fool LLM-as-a-Judge</a> (Jul 2025)</li>
+                <li>Meta Superintelligence Labs and Yale, <a href="https://arxiv.org/abs/2603.12246" target="_blank">Examining Reasoning LLMs-as-Judges in Non-Verifiable Post-Training</a> (Mar 2026)</li>
+              </ul>
+
+              <p class="references-group">Agents and their graders</p>
+              <ul>
+                <li>Zhu et al., <a href="https://arxiv.org/abs/2507.02825" target="_blank">Establishing Best Practices for Building Rigorous Agentic Benchmarks</a> (Jul 2025)</li>
+                <li>Zhong, Raghunathan, Carlini, <a href="https://arxiv.org/abs/2510.20270" target="_blank">ImpossibleBench</a> (Oct 2025)</li>
+                <li>METR, <a href="https://metr.org/blog/2025-06-05-recent-reward-hacking/" target="_blank">Recent Frontier Models Are Reward Hacking</a> (Jun 2025)</li>
+                <li>Apollo Research and OpenAI, <a href="https://arxiv.org/abs/2509.15541" target="_blank">Stress testing deliberative alignment for anti-scheming training</a> (Sep 2025)</li>
+                <li>FutureHouse, <a href="https://www.futurehouse.org/research/hle-exam" target="_blank">About 30% of Humanity's Last Exam Chemistry/Biology Answers are Likely Wrong</a> (Jul 2025)</li>
+              </ul>
+
+              <p class="references-group">Production practice</p>
+              <ul>
+                <li>Hamel Husain and Shreya Shankar, <a href="https://hamel.dev/blog/posts/evals-faq/" target="_blank">AI Evals: Everything You Need to Know</a> (Sep 2026)</li>
+                <li>Eugene Yan, <a href="https://eugeneyan.com/writing/product-evals/" target="_blank">Product Evals in Three Simple Steps</a> (Nov 2025)</li>
+                <li>Shopify Engineering, <a href="https://shopify.engineering/building-production-ready-agentic-systems" target="_blank">Building production-ready agentic systems: Lessons from Shopify Sidekick</a> (Aug 2025)</li>
+                <li>Airbnb Engineering, <a href="https://airbnb.tech/ai-ml/eval-driven-development-lessons-from-evaluating-genai-at-scale/" target="_blank">Eval-driven development: Lessons from evaluating GenAI at scale</a> (2026)</li>
+                <li>Intercom, <a href="https://ideas.fin.ai/p/why-not-just-ship-it" target="_blank">Why not just ship it?</a> (Aug 2026)</li>
+                <li>Singh et al., <a href="https://arxiv.org/abs/2504.20879" target="_blank">The Leaderboard Illusion</a> (Apr 2025)</li>
+              </ul>
+            </div>
+          </div>
+
+          <p style="text-align: center; margin-top: 2em;">
+            <a href="../blog.html" style="font-weight: 600;">← Back to Blog</a>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small><b>Last Updated:</b> November 2026</small>
+        <small class="block">
+          © Precious Kolawole. Inspired by
+          <a href="https://stevenkolawole.github.io/" target="_blank"><span style="color: #FFC0CB">Steven Kolawole's page</span></a>
+          · Hosted on
+          <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+        </small>
+      </div>
+    </footer>
+  </body>
+</html>
