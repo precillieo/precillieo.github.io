@@ -1,0 +1,4 @@
+# Paths left out of the published GitHub Pages site. The files stay in the repo.
+exclude:
+  - seifert/
+  - assets/seifert/
