@@ -14,10 +14,6 @@
       href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.0.7/css/all.css"
-    />
     <style>
       .blog-post {
         line-height: 1.8;
@@ -25,7 +21,7 @@
 
       .post-date {
         text-align: center;
-        color: #888;
+        color: #666;
         font-size: 0.9em;
         margin-top: -0.5em;
         margin-bottom: 2em;
@@ -75,13 +71,13 @@
     <header class="site-header">
       <nav class="nav">
         <div class="container flex-wrap">
-          <h1 class="logo">
+          <p class="logo">
             <a href="https://precillieo.github.io">Precious Kolawole</a>
-          </h1>
+          </p>
           <ul class="navbar">
             <li><a href="../index.html#about">About</a></li>
             <li><a href="../news.html">News</a></li>
-            <li><a href="../assets/Precious Kolawole Resume.pdf">CV</a></li>
+            <li><a href="../assets/cv.pdf">CV</a></li>
             <li><a href="../blog.html">Blog</a></li>
             <li><a href="https://www.precillieo.com/" target="_blank">Other website</a></li>
           </ul>
@@ -122,7 +118,7 @@
 
             <p>This is what I found.</p>
 
-            <h3 class="section-header">The short answer</h3>
+            <h2 class="section-header">The short answer</h2>
 
             <p>
               The second option is the closest, but "on top" is the wrong picture. The judge has not been crowned with something new. It has been moved down the stack and fenced in.
@@ -134,7 +130,7 @@
 
             <p>The judge is not dead. It is just no longer in charge.</p>
 
-            <h3 class="section-header">What the labs actually do</h3>
+            <h2 class="section-header">What the labs actually do</h2>
 
             <p>
               The first thing I did was look at how the people building the most capable models grade them.
@@ -160,7 +156,7 @@
               That sentence is my worry, written by the people with the most reason to hope it isn't true.
             </p>
 
-            <h3 class="section-header">Where judges break</h3>
+            <h2 class="section-header">Where judges break</h2>
 
             <p>
               The academic work answered a question I had been circling for a while: when exactly does a judge stop being reliable?
@@ -190,7 +186,7 @@
               To be fair, humans are not a clean gold standard either. In the <a href="https://arxiv.org/abs/2512.16041" target="_blank">Sage</a> study, people changed their preference a third of the time when two similar answers were shown in the opposite order. A <a href="https://www.futurehouse.org/research/hle-exam" target="_blank">FutureHouse review</a> found that about 29% of the biology and chemistry answers in Humanity's Last Exam conflict with the published literature. Expert labels are better than judge labels. They are not perfect.
             </p>
 
-            <h3 class="section-header">What gets added to the judge</h3>
+            <h2 class="section-header">What gets added to the judge</h2>
 
             <p>
               My second option was right: something is being added. Most of the research energy in the last two years has gone into making judges stronger through training.
@@ -218,7 +214,7 @@
               So yes, something is being added. But training makes a judge better and cheaper. It does not make it a source of truth, and it raises a new danger: whatever you optimise against, the model will learn to please.
             </p>
 
-            <h3 class="section-header">When the agent is smarter than the grader</h3>
+            <h2 class="section-header">When the agent is smarter than the grader</h2>
 
             <p>
               This was the part of the reading that unsettled me most, because it is my original worry made concrete.
@@ -240,7 +236,7 @@
               The evaluations that hold up best here are the ones where the world does the grading. Forecasts that resolve against real events. Simulated businesses scored by their bank balance at the end of a year. A/B tests on whether customers actually got their problem solved.
             </p>
 
-            <h3 class="section-header">How teams do it in production</h3>
+            <h2 class="section-header">How teams do it in production</h2>
 
             <p>
               The engineering blogs were the most reassuring part of this, because the teams that ship agents have mostly arrived at the same place on their own.
@@ -260,7 +256,7 @@
               The agreement numbers teams publish are modest, and I find that honest. <a href="https://shopify.engineering/building-production-ready-agentic-systems" target="_blank">Shopify's Sidekick team</a> took a judge from a kappa of 0.02 to 0.61, against a human ceiling of 0.69, and judged it ready when people could not tell judge-scored conversations from human-scored ones. Airbnb raised a judge from 78% to 88% agreement on 60 golden examples. Intercom replays thousands of past conversations through a new version of Fin before it reaches a single customer, then A/B tests it. Pairwise ranking is used too, mostly to compare models, and public arenas come with known distortions, documented in <a href="https://arxiv.org/abs/2504.20879" target="_blank">The Leaderboard Illusion</a>.
             </p>
 
-            <h3 class="section-header">Can LLM labels replace human labels?</h3>
+            <h2 class="section-header">Can LLM labels replace human labels?</h2>
 
             <p>
               If models are this capable, why not let one produce the labels judges are measured against? I looked for evidence that this works. As ground truth, it mostly does not.
@@ -285,7 +281,7 @@
               Human labels carry their own noise: physicians in HealthBench agreed with each other at an F1 of only 0.57 to 0.73. The answer is not to drop them, but to use more than one expert per item and to measure judges against how well people agree, not against 100%.
             </p>
 
-            <h3 class="section-header">What I believe now</h3>
+            <h2 class="section-header">What I believe now</h2>
 
             <p>If I compress everything into a few beliefs I would stake my work on, they are these.</p>
 
@@ -298,7 +294,7 @@
               <li><strong>Let the world grade when it can.</strong> Real outcomes are the one judge an agent cannot charm.</li>
             </ul>
 
-            <h3 class="section-header">Parting thoughts</h3>
+            <h2 class="section-header">Parting thoughts</h2>
 
             <p>
               I started this with a burden, and I am ending it lighter, though not because the worry was wrong. It was right. LLM judges really do fail in the places I feared: on hard tasks, on agents more capable than themselves, and under pressure from models that learn to please them.
@@ -312,7 +308,7 @@
               I'm probably not done thinking about this. As agents keep improving, the fences will need to move again, and I'll keep writing as I learn where.
             </p>
 
-            <h3 class="section-header">References</h3>
+            <h2 class="section-header">References</h2>
 
             <div class="references">
               <p class="references-group">Frontier labs</p>
@@ -391,7 +387,7 @@
         <small><b>Last Updated:</b> November 2026</small>
         <small class="block">
           © Precious Kolawole. Inspired by
-          <a href="https://stevenkolawole.github.io/" target="_blank"><span style="color: #FFC0CB">Steven Kolawole's page</span></a>
+          <a href="https://stevenkolawole.github.io/" target="_blank">Steven Kolawole's page</a>
           · Hosted on
           <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
         </small>
